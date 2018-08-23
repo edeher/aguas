@@ -42,8 +42,15 @@ public class BacterialDAOImpl implements IBacterialDAO, Serializable{
 
 	@Override
 	public Bacterial listarPorId(Bacterial t) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		 List<Bacterial> lista=new ArrayList<>();
+			
+			Query q=em.createQuery("FROM Bacterial b where b.idBacterial=?1");
+			q.setParameter(1, t.getIdBacterial() );
+			lista=(List<Bacterial>)q.getResultList();
+			
+			Bacterial bacterial=lista!=null&&!lista.isEmpty() ? lista.get(0):new Bacterial();
+			
+			return bacterial;
 	}
 
 }
