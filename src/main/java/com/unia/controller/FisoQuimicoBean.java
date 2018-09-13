@@ -15,7 +15,7 @@ import com.unia.util.MensajeManager;
 
 @Named
 @ViewScoped
-public class FisicoQuimicoBean implements Serializable{
+public class FisoQuimicoBean implements Serializable{
 
 	@Inject 
 	private FisoQuimico fisoquimico;
@@ -28,6 +28,7 @@ public class FisicoQuimicoBean implements Serializable{
 	
 	@PostConstruct
 	public void init() {
+		this.titulo="Nuevo";
 		lstFisoQuimico= new ArrayList<>();
 		this.listarfisoquimico();
 	}

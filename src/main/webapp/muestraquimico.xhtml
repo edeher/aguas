@@ -9,18 +9,100 @@
 <body> 
 <ui:composition template="/WEB-INF/templates/plantilla.xhtml">
 		<ui:define name="content">
+<p:messages id="msj" autoUpdate="true" showDetail="true" globalOnly="true" closable="true"/>
+			<h:form id="frm">
+				<p:commandButton value="nuevo"
+					oncomplete="PF('wdlgMuestraQuimico').show();"  update="frm:dlgMuestraQuimico" />
+				<p:dataTable id="dtMuestraQuimico" value="#{muestraQuimicoBean.lstMuestraQuimico}" widgetVar="formatosTable"
+					var="muqi">
+					
+					<f:facet name="header">
+						<p:outputPanel>
+							<h:outputText value="Buscar:" />
+							<p:inputText id="globalFilter"
+								onkeyup="buscarFiltros('formatosTable', this);"
+								style="width:150px" placeholder="Ingrese una palabra" />
+						</p:outputPanel>
+					</f:facet>
+					
+					<p:column headerText="id" style="width:30px" filterBy="#{muba.idMuestraQuimico}" filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{muba.idMuestraQuimico }" />
+					</p:column>
+					<p:column headerText="canthuehelmintos" filterBy="#{muba.canthuehelmintos}" filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{muba.canthuehelmintos }" />
+					</p:column>
+					<p:column headerText="coliformes" filterBy="#{muba.coliformes}" filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{muba.coliformes}" >
+						<f:convertNumber currencySymbol="" maxFractionDigits="2"
+							maxIntegerDigits="10" type="currency" locale="true"/>
+						</p:outputLabel>
+					</p:column>
+					<p:column headerText="fecha"  filterBy="#{muba.fecha}" filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{muba.fecha}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</p:outputLabel>
+					</p:column>
+					<p:column headerText="nromuestra" filterBy="#{muba.nromuestra}" filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{muba.nromuestra }" />
+					</p:column>
+					
+					<p:column headerText="bacterial" filterBy="#{muba.bacterial.idBacterial}" filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{muba.bacterial.idBacterial}" />
+					</p:column>
+					
+					<p:column style="width:30px">
+						<p:commandLink actionListener="#{MuestraQuimicoBean.seleccionar(muba)}"
+							oncomplete="PF('wdlgMuestraQuimico').show();" update="frm:dlgMuestraQuimico">
+							<p:graphicImage library="images" name="edit.jpg" />
 
-			<h:form>
-			<p:dataTable>
-			</p:dataTable>
-			<p:dialog>
-			
-			</p:dialog>
+						</p:commandLink>
+
+					</p:column>
+				</p:dataTable>
+
+				<p:dialog header="#{muestraQuimicoBean.titulo}" id="dlgMuestraQuimico" widgetVar="wdlgMuestraQuimico" modal="true">
+					<p:panelGrid columns="2">
+						<p:outputLabel value="Bacterial" />
+						<p:selectOneMenu id="cboProyecto" value="#{muestraQuimicoBean.quimico}"
+							converter="omnifaces.SelectItemsConverter">
+							<f:selectItem itemLabel="--seleccione--" itemValue="#{null}"
+								noSelectionOption="true" />
+							<f:selectItems value="#{muestraQuimicoBean.lstQuimico}" var="qi"
+								itemLabel="#{qi.idQuimico}" itemValue="#{qi}" />
+
+						</p:selectOneMenu>
+
+						<p:outputLabel value="canthuehelmintos" />
+						<p:inputText value="#{muestraQuimicoBean.MuestraQuimico.canthuehelmintos}" />
+
+						<p:outputLabel value="coliformes" style="font-weight:bold;" />
+						<p:inputNumber value="#{muestraQuimicoBean.MuestraQuimico.coliformes}" decimalSeparator="." thousandSeparator=","/>
+						
+						<p:outputLabel value="Fecha "
+							style="font-weight: bold;" />
+						<p:calendar id="txtFecha"
+							value="#{muestraQuimicoBean.MuestraQuimico.fecha}" locale="es"
+							pattern="dd/MM/yyyy" mask="99/99/9999">
+
+						</p:calendar>
+						
+						<p:outputLabel value="nromuestra" />
+						<p:inputText value="#{muestraQuimicoBean.MuestraQuimico.nromuestra}" />
+					</p:panelGrid>
+					<h:panelGroup layout="block" style="float:right">
+						<p:commandButton value="Aceptar"
+							actionListener="#{muestraQuimicoBean.operar()}" ajax="false"
+							action="muestraQuimico?faces-redirect=true" />
+						<p:commandButton value="Cancelar" immediate="true"
+							onclick="PF('wdlgMuestraQuimico').hide();" />
+					</h:panelGroup>
+
+				</p:dialog>
 
 			</h:form>
 
 		</ui:define>
-
 	</ui:composition>
-</body> 
+
+</body>
 </html>

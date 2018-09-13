@@ -9,19 +9,79 @@
 <body>
 	<ui:composition template="/WEB-INF/templates/plantilla.xhtml">
 		<ui:define name="content">
-
-			<h:form>
-			<p:dataTable>
-			</p:dataTable>
-			<p:dialog>
+			<p:messages id="msj" autoUpdate="true" showDetail="true"
+				globalOnly="true" closable="true" />
+			<h:form id="frm">
 			
-			</p:dialog>
+			<p:commandButton value="Nuevo" oncomplete="PF('wdlgBacterial').show();"  update="frm:dlgBacterial" />
+			
+				<p:dataTable id="dtbacterial" widgetVar="formatosTable"
+					value="#{bacterialBean.lstBacterial }" var="ba">
+					
+					<f:facet name="header">
+						<p:outputPanel>
+							<h:outputText value="Buscar:" />
+							<p:inputText id="globalFilter"
+								onkeyup="buscarFiltros('formatosTable', this);"
+								style="width:150px" placeholder="Ingrese una palabra" />
+						</p:outputPanel>
+					</f:facet>
+					
+					<p:column headerText="id" style="width:30px"
+						filterBy="#{ba.idBacterial}" filterMatchMode="contains"
+						filterStyle="display:none">
+						<p:outputLabel value="#{ba.idBacterial}" />
+					</p:column>
+					<p:column headerText="fecha"  filterBy="#{ba.fecha}" filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{ba.fecha}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</p:outputLabel>
+					</p:column>
+					<p:column headerText="promedio" filterBy="#{ba.promedio}" filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{ba.promedio}" >
+						<f:convertNumber currencySymbol="s/." maxFractionDigits="2"
+							maxIntegerDigits="10" type="currency" locale="true"/>
+						</p:outputLabel>
+					</p:column>
+					
+					
+					<p:column style="width:30px">
+						<p:commandLink actionListener="#{bacterialBean.seleccionar(ba)}"
+							oncomplete="PF('wdlgBacterial').show();" update="frm:dlgBacterial">
+							<p:graphicImage library="images" name="edit.jpg" />
+
+						</p:commandLink>
+
+					</p:column>
+					
+				</p:dataTable>
+				<p:dialog header="#{bacterialBean.titulo}" id="dlgBacterial" widgetVar="wdlgBacterial" modal="true">
+				
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Fecha "
+							style="font-weight: bold;" />
+						<p:calendar id="txtFecha"
+							value="#{bacterialBean.bacterial.fecha}" locale="es"
+							pattern="dd/MM/yyyy" mask="99/99/9999">
+
+						</p:calendar>
+					<p:outputLabel value="Promedio" style="font-weight:bold;" />
+						<p:inputNumber value="#{bacterialBean.bacterial.promedio}" decimalSeparator="." thousandSeparator=","/>
+				
+				</p:panelGrid>
+				<h:panelGroup layout="block" style="float:right">
+						<p:commandButton value="Aceptar"
+							actionListener="#{bacterialBean.operar()}" ajax="false"
+							action="bacterial?faces-redirect=true" />
+						<p:commandButton value="Cancelar" immediate="true"
+							onclick="PF('wdlgBacterial').hide();" />
+				</h:panelGroup>
+				</p:dialog>
 
 			</h:form>
 
 		</ui:define>
 
 	</ui:composition>
-
 </body>
 </html>

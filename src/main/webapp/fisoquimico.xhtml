@@ -9,18 +9,79 @@
 <body> 
 <ui:composition template="/WEB-INF/templates/plantilla.xhtml">
 		<ui:define name="content">
-
-			<h:form>
-			<p:dataTable>
-			</p:dataTable>
-			<p:dialog>
+			<p:messages id="msj" autoUpdate="true" showDetail="true"
+				globalOnly="true" closable="true" />
+			<h:form id="frm">
 			
-			</p:dialog>
+			<p:commandButton value="Nuevo" oncomplete="PF('wdlgFisoQuimico').show();"  update="frm:dlgFisoQuimico" />
+			
+				<p:dataTable id="dtFisoQuimico" widgetVar="formatosTable"
+					value="#{fisoQuimicoBean.lstFisoQuimico }" var="fiqi">
+					
+					<f:facet name="header">
+						<p:outputPanel>
+							<h:outputText value="Buscar:" />
+							<p:inputText id="globalFilter"
+								onkeyup="buscarFiltros('formatosTable', this);"
+								style="width:150px" placeholder="Ingrese una palabra" />
+						</p:outputPanel>
+					</f:facet>
+					
+					<p:column headerText="id" style="width:30px"
+						filterBy="#{fiqi.idFisoQuimico}" filterMatchMode="contains"
+						filterStyle="display:none">
+						<p:outputLabel value="#{fiqi.idFisoQuimico}" />
+					</p:column>
+					<p:column headerText="fecha"  filterBy="#{fiqi.fecha}" filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{fiqi.fecha}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</p:outputLabel>
+					</p:column>
+					<p:column headerText="promedio" filterBy="#{fiqi.promedio}" filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{fiqi.promedio}" >
+						<f:convertNumber currencySymbol="s/." maxFractionDigits="2"
+							maxIntegerDigits="10" type="currency" locale="true"/>
+						</p:outputLabel>
+					</p:column>
+					
+					
+					<p:column style="width:30px">
+						<p:commandLink actionListener="#{fisoQuimicoBean.Seleccionar(fiqi)}"
+							oncomplete="PF('wdlgFisoQuimico').show();" update="frm:dlgFisoQuimico">
+							<p:graphicImage library="images" name="edit.jpg" />
+
+						</p:commandLink>
+
+					</p:column>
+					
+				</p:dataTable>
+				<p:dialog header="#{fisoQuimicoBean.titulo}" id="dlgFisoQuimico" widgetVar="wdlgFisoQuimico" modal="true">
+				
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Fecha "
+							style="font-weight: bold;" />
+						<p:calendar id="txtFecha"
+							value="#{fisoQuimicoBean.fisoquimico.fecha}" locale="es"
+							pattern="dd/MM/yyyy" mask="99/99/9999">
+
+						</p:calendar>
+					<p:outputLabel value="Promedio" style="font-weight:bold;" />
+						<p:inputNumber value="#{fisoQuimicoBean.fisoquimico.promedio}" decimalSeparator="." thousandSeparator=","/>
+				
+				</p:panelGrid>
+				<h:panelGroup layout="block" style="float:right">
+						<p:commandButton value="Aceptar"
+							actionListener="#{fisoQuimicoBean.operar()}" ajax="false"
+							action="fisoquimico?faces-redirect=true" />
+						<p:commandButton value="Cancelar" immediate="true"
+							onclick="PF('wdlgFisoQuimico').hide();" />
+				</h:panelGroup>
+				</p:dialog>
 
 			</h:form>
 
 		</ui:define>
 
 	</ui:composition>
-</body> 
+</body>
 </html>

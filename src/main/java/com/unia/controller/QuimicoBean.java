@@ -27,6 +27,7 @@ public class QuimicoBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
+		this.titulo="Nuevo";
 		lstQuimico = new ArrayList<>();
 		this.listarquimico();
 	}

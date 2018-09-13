@@ -28,6 +28,7 @@ public class BacterialBean implements Serializable {
 	
 	@PostConstruct
 	public void init() {
+		this.titulo="Nuevo";
 		lstBacterial= new ArrayList<>();
 		this.listarBacterial();
 	}

@@ -35,7 +35,7 @@ public class MuestraQuimicoBean implements Serializable{
 	
 	@PostConstruct
 	public void init() {
-		
+		this.titulo="Nuevo";
 		lstMuestraQuimico= new ArrayList<>();
 		lstQuimico= new ArrayList<>();
 		this.listarmuestraquimico();

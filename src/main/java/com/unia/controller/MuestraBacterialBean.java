@@ -38,7 +38,7 @@ public class MuestraBacterialBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-
+		this.titulo="Nuevo";
 		lstBacterial = new ArrayList<>();
 		lstMuestraBacterial = new ArrayList<>();
 		this.listarbacterial();
