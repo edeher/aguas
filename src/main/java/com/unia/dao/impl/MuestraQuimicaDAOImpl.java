@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.unia.dao.IMuestraQuimicoDAO;
+import com.unia.model.MuestraFisoQuimico;
 import com.unia.model.MuestraQuimico;
 import com.unia.model.Quimico;
 
@@ -52,6 +53,19 @@ public class MuestraQuimicaDAOImpl implements IMuestraQuimicoDAO, Serializable{
 		MuestraQuimico muestraquimico = lista != null && !lista.isEmpty() ? lista.get(0) : new MuestraQuimico();
 
 		return muestraquimico;
+	}
+
+	@Override
+	public List<MuestraQuimico> listarPorQuimico(Quimico qi) throws Exception {
+			List<MuestraQuimico> lista=null;
+		
+		Query q= em.createQuery("FROM MuestraQuimico mf where mf.quimico.idQuimico?1");
+		q.setParameter(1, qi.getIdQuimico() );
+		
+		lista=(List<MuestraQuimico>)q.getResultList();
+		
+				
+		return lista;
 	}
 
 }

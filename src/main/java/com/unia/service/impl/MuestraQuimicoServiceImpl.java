@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import com.unia.dao.IMuestraQuimicoDAO;
 import com.unia.model.MuestraQuimico;
+import com.unia.model.Quimico;
 import com.unia.service.IMuestraQuimicoService;
 
 @Named
@@ -38,6 +39,12 @@ public class MuestraQuimicoServiceImpl implements IMuestraQuimicoService, Serial
 	public MuestraQuimico listarPorId(MuestraQuimico t) throws Exception {
 		
 		return dao.listarPorId(t);
+	}
+
+	@Override
+	public List<MuestraQuimico> listarPorQuimico(Quimico q) throws Exception {
+		
+		return dao.listarPorQuimico(q);
 	}
 
 }

@@ -54,4 +54,17 @@ public class MuestraBacterialDAOImpl implements IMuestraBacterialDAO, Serializab
 			return muestrabacterial;
 	}
 
+	@Override
+	public List<MuestraBacterial> listarPorBacterial(Bacterial b) throws Exception {
+		List<MuestraBacterial> lista=null;
+		
+		Query q= em.createQuery("FROM  MuestraBacterial mb where mb.bacterial.idBacterial=?1");
+		q.setParameter(1, b.getIdBacterial());
+		
+		lista=(List<MuestraBacterial>)q.getResultList();
+		
+				
+		return lista;
+	}
+
 }

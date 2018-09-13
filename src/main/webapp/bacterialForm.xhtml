@@ -6,15 +6,19 @@
       xmlns:p="http://primefaces.org/ui"> 
 
 <h:head></h:head> 
-<body> 
-<ui:composition template="/WEB-INF/templates/plantilla.xhtml">
+<body> <ui:composition template="/WEB-INF/templates/plantilla.xhtml">
 		<ui:define name="content">
 <p:messages id="msj" autoUpdate="true" showDetail="true" globalOnly="true" closable="true"/>
 			<h:form id="frm">
+			<p:panelGrid columns="2">
+				
+			
+			
+			</p:panelGrid>
 			
 				<p:commandButton value="nuevo"
 					oncomplete="PF('wdlgMuestraBacterial').show();"  update="frm:dlgMuestraBacterial" />
-				<p:dataTable id="dtMuestraBacterial" value="#{muestraBacterialBean.lstMuestraBacterial}" widgetVar="formatosTable"
+				<p:dataTable id="dtMuestraBacterial" value="#{bacterialFormBean.lstMuestraBacterial}" widgetVar="formatosTable"
 					var="muba">
 					
 					<f:facet name="header">
@@ -47,53 +51,44 @@
 						<p:outputLabel value="#{muba.nromuestra }" />
 					</p:column>
 					
-					<p:column headerText="bacterial" filterBy="#{muba.bacterial.idBacterial}" filterMatchMode="contains" filterStyle="display:none">
-						<p:outputLabel value="#{muba.bacterial.idBacterial}" />
-					</p:column>
+					
 					
 					<p:column style="width:30px">
-						<p:commandLink actionListener="#{muestraBacterialBean.seleccionar(muba)}"
+						<p:commandLink actionListener="#{bacterialFormBean.seleccionar(muba)}"
 							oncomplete="PF('wdlgMuestraBacterial').show();" update="frm:dlgMuestraBacterial">
 							<p:graphicImage library="images" name="edit.jpg" />
 
 						</p:commandLink>
 
 					</p:column>
+					
+					
 				</p:dataTable>
 
-				<p:dialog header="#{muestraBacterialBean.titulo}" id="dlgMuestraBacterial" widgetVar="wdlgMuestraBacterial" modal="true">
+				<p:dialog header="#{bacterialFormBean.titulo}" id="dlgMuestraBacterial" widgetVar="wdlgMuestraBacterial" modal="true">
 					<p:panelGrid columns="2">
-						<p:outputLabel value="Bacterial" />
-						<p:selectOneMenu id="cboProyecto" value="#{muestraBacterialBean.bacterial}"
-							converter="omnifaces.SelectItemsConverter">
-							<f:selectItem itemLabel="--seleccione--" itemValue="#{null}"
-								noSelectionOption="true" />
-							<f:selectItems value="#{muestraBacterialBean.lstBacterial}" var="ba"
-								itemLabel="#{ba.idBacterial}" itemValue="#{ba}" />
-
-						</p:selectOneMenu>
-
+						
 						<p:outputLabel value="canthuehelmintos" />
-						<p:inputText value="#{muestraBacterialBean.muestrabacterial.canthuehelmintos}" />
+						<p:inputText value="#{bacterialFormBean.muestrabacterial.canthuehelmintos}" />
 
 						<p:outputLabel value="coliformes" style="font-weight:bold;" />
-						<p:inputNumber value="#{muestraBacterialBean.muestrabacterial.coliformes}" decimalSeparator="." thousandSeparator=","/>
+						<p:inputNumber value="#{bacterialFormBean.muestrabacterial.coliformes}" decimalSeparator="." thousandSeparator=","/>
 						
 						<p:outputLabel value="Fecha "
 							style="font-weight: bold;" />
 						<p:calendar id="txtFecha"
-							value="#{muestraBacterialBean.muestrabacterial.fecha}" locale="es"
+							value="#{bacterialFormBean.muestrabacterial.fecha}" locale="es"
 							pattern="dd/MM/yyyy" mask="99/99/9999">
 
 						</p:calendar>
 						
 						<p:outputLabel value="nromuestra" />
-						<p:inputText value="#{muestraBacterialBean.muestrabacterial.nromuestra}" />
+						<p:inputText value="#{bacterialFormBean.muestrabacterial.nromuestra}" />
 					</p:panelGrid>
 					<h:panelGroup layout="block" style="float:right">
 						<p:commandButton value="Aceptar"
-							actionListener="#{muestraBacterialBean.operar()}" ajax="false"
-							action="muestrabacterial?faces-redirect=true" />
+							actionListener="#{bacterialFormBean.operar()}" ajax="false"
+							action="bacterial?faces-redirect=true" />
 						<p:commandButton value="Cancelar" immediate="true"
 							onclick="PF('wdlgMuestraBacterial').hide();" />
 					</h:panelGroup>

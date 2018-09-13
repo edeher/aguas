@@ -9,6 +9,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.omnifaces.util.Faces;
+
 import com.unia.model.Bacterial;
 import com.unia.service.IBacterialService;
 import com.unia.util.MensajeManager;
@@ -42,6 +44,10 @@ public class BacterialBean implements Serializable {
 			this.titulo = "Modificar";
 
 		}
+	}
+	public void seleccionarba(Bacterial bacterial1) {
+		
+		Faces.setFlashAttribute("bacterial1", bacterial1);
 	}
 
 	public void listarBacterial() {

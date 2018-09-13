@@ -17,7 +17,7 @@ import com.unia.util.MensajeManager;
 
 @Named
 @ViewScoped
-public class MuestraFisicoQuimicoBean implements Serializable {
+public class MuestraFisoQuimicoBean implements Serializable {
 
 	@Inject
 	private MuestraFisoQuimico muestrafisoquimico;

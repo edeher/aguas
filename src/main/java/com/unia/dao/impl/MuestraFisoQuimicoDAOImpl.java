@@ -11,6 +11,7 @@ import javax.persistence.Query;
 
 import com.unia.dao.IMuestraFisoQuimicoDAO;
 import com.unia.model.FisoQuimico;
+import com.unia.model.MuestraBacterial;
 import com.unia.model.MuestraFisoQuimico;
 
 @Stateless
@@ -52,6 +53,19 @@ public class MuestraFisoQuimicoDAOImpl implements IMuestraFisoQuimicoDAO, Serial
 		MuestraFisoQuimico muestrafisoquimico = lista != null && !lista.isEmpty() ? lista.get(0) : new MuestraFisoQuimico();
 
 		return muestrafisoquimico;
+	}
+
+	@Override
+	public List<MuestraFisoQuimico> listarPorFisoQuimico(FisoQuimico fi) throws Exception {
+		List<MuestraFisoQuimico> lista=null;
+		
+		Query q= em.createQuery("FROM MuestraFisoQuimico mf where mf.fisoQuimico.idFisoQuimico?1");
+		q.setParameter(1, fi.getIdFisoQuimico());
+		
+		lista=(List<MuestraFisoQuimico>)q.getResultList();
+		
+				
+		return lista;
 	}
 
 }

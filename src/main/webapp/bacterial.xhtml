@@ -39,7 +39,7 @@
 					</p:column>
 					<p:column headerText="promedio" filterBy="#{ba.promedio}" filterMatchMode="contains" filterStyle="display:none">
 						<p:outputLabel value="#{ba.promedio}" >
-						<f:convertNumber currencySymbol="s/." maxFractionDigits="2"
+						<f:convertNumber currencySymbol="" maxFractionDigits="2"
 							maxIntegerDigits="10" type="currency" locale="true"/>
 						</p:outputLabel>
 					</p:column>
@@ -52,6 +52,12 @@
 
 						</p:commandLink>
 
+					</p:column>
+					<p:column style="width:30px">
+						<p:commandLink actionListener="#{bacterialBean.seleccionarba(ba)}"
+							action="bacterialForm">
+							<p:graphicImage library="images" name="lupa.png" />
+						</p:commandLink>
 					</p:column>
 					
 				</p:dataTable>

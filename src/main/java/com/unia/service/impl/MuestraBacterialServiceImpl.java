@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 
 import com.unia.dao.IMuestraBacterialDAO;
+import com.unia.model.Bacterial;
 import com.unia.model.MuestraBacterial;
 import com.unia.service.IMuestraBacterialService;
 
@@ -38,6 +39,12 @@ public class MuestraBacterialServiceImpl implements IMuestraBacterialService, Se
 	public MuestraBacterial listarPorId(MuestraBacterial t) throws Exception {
 		
 		return dao.listarPorId(t);
+	}
+
+	@Override
+	public List<MuestraBacterial> listarPorBacterial(Bacterial b) throws Exception {
+		
+		return dao.listarPorBacterial(b);
 	}
 
 }

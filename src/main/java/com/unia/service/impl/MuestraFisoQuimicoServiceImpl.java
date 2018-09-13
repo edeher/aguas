@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 
 import com.unia.dao.IMuestraFisoQuimicoDAO;
+import com.unia.model.FisoQuimico;
 import com.unia.model.MuestraFisoQuimico;
 import com.unia.service.IMuestraFisoQuimicoService;
 
@@ -40,4 +41,9 @@ public class MuestraFisoQuimicoServiceImpl implements IMuestraFisoQuimicoService
 		return dao.listarPorId(t);
 	}
 
+	@Override
+	public List<MuestraFisoQuimico> listarPorFisoQuimico(FisoQuimico fi) throws Exception {
+		
+		return dao.listarPorFisoQuimico(fi);
+	}
 }

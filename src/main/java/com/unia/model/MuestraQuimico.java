@@ -56,7 +56,7 @@ public class MuestraQuimico implements Serializable{
 	private double fosforos;
 	
 	@Column(name="p1", columnDefinition="Decimal(10,2)", nullable=false)
-	private double p2;
+	private double p1;
 	
 	@Column(name="nitrogenoamoniaca", columnDefinition="Decimal(10,2)", nullable=false)
 	private double nitrogenoamoniaca;
@@ -170,12 +170,13 @@ public class MuestraQuimico implements Serializable{
 		this.fosforos = fosforos;
 	}
 
-	public double getP2() {
-		return p2;
+	
+	public double getP1() {
+		return p1;
 	}
 
-	public void setP2(double p2) {
-		this.p2 = p2;
+	public void setP1(double p1) {
+		this.p1 = p1;
 	}
 
 	public double getNitrogenoamoniaca() {
