@@ -53,6 +53,12 @@
 						</p:commandLink>
 
 					</p:column>
+					<p:column style="width:30px">
+						<p:commandLink actionListener="#{quimicoBean.seleccionarba(qi)}"
+							action="quimicoForm">
+							<p:graphicImage library="images" name="lupa.png" />
+						</p:commandLink>
+					</p:column>
 					
 				</p:dataTable>
 				<p:dialog header="#{quimicoBean.titulo}" id="dlgQuimico" widgetVar="wdlgQuimico" modal="true">

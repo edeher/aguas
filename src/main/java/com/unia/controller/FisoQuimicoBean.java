@@ -9,7 +9,10 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.omnifaces.util.Faces;
+
 import com.unia.dao.IFisoQuimicoDAO;
+import com.unia.model.Bacterial;
 import com.unia.model.FisoQuimico;
 import com.unia.util.MensajeManager;
 
@@ -52,7 +55,10 @@ public class FisoQuimicoBean implements Serializable{
 			this.titulo="Modificar";
 		}
 	}
-	
+public void seleccionarba(FisoQuimico fisoquimico1) {
+		
+		Faces.setFlashAttribute("fisoquimico1", fisoquimico1);
+	}
 	public void operar() {
 		
 		try {

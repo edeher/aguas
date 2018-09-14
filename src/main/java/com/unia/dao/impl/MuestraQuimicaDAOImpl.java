@@ -59,7 +59,7 @@ public class MuestraQuimicaDAOImpl implements IMuestraQuimicoDAO, Serializable{
 	public List<MuestraQuimico> listarPorQuimico(Quimico qi) throws Exception {
 			List<MuestraQuimico> lista=null;
 		
-		Query q= em.createQuery("FROM MuestraQuimico mf where mf.quimico.idQuimico?1");
+		Query q= em.createQuery("FROM MuestraQuimico mq where mq.quimico.idQuimico=?1");
 		q.setParameter(1, qi.getIdQuimico() );
 		
 		lista=(List<MuestraQuimico>)q.getResultList();

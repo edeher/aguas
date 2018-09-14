@@ -59,7 +59,7 @@ public class MuestraFisoQuimicoDAOImpl implements IMuestraFisoQuimicoDAO, Serial
 	public List<MuestraFisoQuimico> listarPorFisoQuimico(FisoQuimico fi) throws Exception {
 		List<MuestraFisoQuimico> lista=null;
 		
-		Query q= em.createQuery("FROM MuestraFisoQuimico mf where mf.fisoQuimico.idFisoQuimico?1");
+		Query q= em.createQuery("FROM MuestraFisoQuimico mf where mf.fisoquimico.idFisoQuimico=?1");
 		q.setParameter(1, fi.getIdFisoQuimico());
 		
 		lista=(List<MuestraFisoQuimico>)q.getResultList();

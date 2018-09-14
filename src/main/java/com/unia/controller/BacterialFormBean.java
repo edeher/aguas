@@ -34,6 +34,8 @@ public class BacterialFormBean implements Serializable{
 	private List<Bacterial> lstBacterial;
 	private List<MuestraBacterial> lstMuestraBacterial;
 	private String titulo;
+	private int nro1;
+	private int nro2;
 	@PostConstruct
 	public void init() {
 		this.titulo="Nuevo";
@@ -46,10 +48,15 @@ public class BacterialFormBean implements Serializable{
 			this.leer(bac);
 			this.listarMuestraBacterial(bac);
 		}
-		
 	}
-	
-	
+		public void limpiarControles() {
+			this.titulo="Nuevo";
+			this.muestrabacterial.setIdMuestraBacterial((short)0);
+			this.muestrabacterial.setCanthuehelmintos((short)0);
+			this.muestrabacterial.setColiformes((short)0);
+			this.muestrabacterial.setFecha(null);
+			this.muestrabacterial.setNromuestra((short)0);
+		}
 	public void leer(Bacterial b) {
 		
 		try {
@@ -64,7 +71,7 @@ public class BacterialFormBean implements Serializable{
 		try {
 			lstMuestraBacterial=servicemuestrabacterial.listarPorBacterial(b);
 		} catch (Exception e) {
-			
+			MensajeManager.mostrarMensaje("Aviso", e.getMessage(), "FATAL");
 		}
 	}
 	public void operar() {
@@ -77,9 +84,21 @@ public class BacterialFormBean implements Serializable{
 				servicemuestrabacterial.modificar(muestrabacterial);
 				MensajeManager.mostrarMensaje("Aviso", "Modificación Exitosa", "INFO");
 			} else {
+				List<MuestraBacterial> mubac1=this.lstMuestraBacterial;
+				for(MuestraBacterial muestrita: mubac1) {
+					
+					nro1=muestrita.getNromuestra();
+				}
+				
+				if(nro1<12) {
+					nro2=nro1+1;
+
+				muestrabacterial.setNromuestra(nro2);
 				muestrabacterial.setBacterial(bac1);
 				servicemuestrabacterial.registrar(muestrabacterial);
 				MensajeManager.mostrarMensaje("Aviso", "Registro Exitoso", "INFO");
+				}
+				
 			}
 
 		} catch (Exception e) {
@@ -146,6 +165,18 @@ public class BacterialFormBean implements Serializable{
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+	public int getNro1() {
+		return nro1;
+	}
+	public void setNro1(int nro1) {
+		this.nro1 = nro1;
+	}
+	public int getNro2() {
+		return nro2;
+	}
+	public void setNro2(int nro2) {
+		this.nro2 = nro2;
 	}
 	
 	

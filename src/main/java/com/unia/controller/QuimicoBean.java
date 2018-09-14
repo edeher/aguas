@@ -9,6 +9,9 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.omnifaces.util.Faces;
+
+import com.unia.model.FisoQuimico;
 import com.unia.model.Quimico;
 import com.unia.service.IQuimicoService;
 import com.unia.util.MensajeManager;
@@ -52,7 +55,10 @@ public class QuimicoBean implements Serializable {
 			this.titulo = "Modificar";
 		}
 	}
-
+public void seleccionarba(Quimico quimico1) {
+		
+		Faces.setFlashAttribute("quimico1", quimico1);
+	}
 	public void operar() {
 		try {
 			if(quimico.getIdQuimico()>0) {

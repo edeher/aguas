@@ -54,6 +54,13 @@
 
 					</p:column>
 					
+					<p:column style="width:30px">
+						<p:commandLink actionListener="#{fisoQuimicoBean.seleccionarba(fiqi)}"
+							action="fisoquimicoForm">
+							<p:graphicImage library="images" name="lupa.png" />
+						</p:commandLink>
+					</p:column>
+					
 				</p:dataTable>
 				<p:dialog header="#{fisoQuimicoBean.titulo}" id="dlgFisoQuimico" widgetVar="wdlgFisoQuimico" modal="true">
 				
