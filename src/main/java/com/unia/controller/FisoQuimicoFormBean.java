@@ -75,6 +75,7 @@ public class FisoQuimicoFormBean implements Serializable{
 	}
 	public void operar() {
 		try {
+			
 				FisoQuimico fiso1=this.fisoquimico;
 			if(muestrafisoquimico.getIdMuestraFisoQuimico()>0) {
 				muestrafisoquimico.setFisoquimico(fiso1);

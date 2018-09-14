@@ -11,16 +11,18 @@
 		<ui:define name="content">
 			<p:messages id="msj" autoUpdate="true" showDetail="true"
 				globalOnly="true" closable="true" />
+
 			<h:form id="frm">
 				<p:fieldset id="pgMuestra" legend="#{fisoQuimicoFormBean.titulo}"
 					toggleable="true">
 					<p:panelGrid columns="2">
 						<p:panelGrid columns="2">
 							<p:outputLabel value="nromuestra" />
-							<p:outputLabel value="#{fisoQuimicoFormBean.muestrafisoquimico.nromuestra}" />
-													
-								
-								
+							<p:outputLabel
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.nromuestra}" />
+
+
+
 							<p:outputLabel value="Fecha " style="font-weight: bold;" />
 							<p:calendar id="txtFecha"
 								value="#{fisoQuimicoFormBean.muestrafisoquimico.fecha}"
@@ -76,29 +78,27 @@
 								decimalSeparator="." thousandSeparator="," />
 
 						</p:panelGrid>
-
+						<p:commandButton value="Aceptar"
+							actionListener="#{fisoQuimicoFormBean.operar()}"
+							update="dtMuestra, pgMuestra" />
+						<p:commandButton value="Cancelar" global="false"
+							update="pgMuestra"
+							rendered="#{fisoQuimicoFormBean.titulo eq 'Modificar'}"
+							actionListener="#{fisoQuimicoFormBean.limpiarControles()}" />
 
 					</p:panelGrid>
-					<p:commandButton value="Aceptar"
-						actionListener="#{fisoQuimicoFormBean.operar()}"
-						update="dtMuestra, pgMuestra" />
-					<p:commandButton value="Cancelar" global="false" update="pgMuestra"
-						rendered="#{fisoQuimicoFormBean.titulo eq 'Modificar'}"
-						actionListener="#{fisoQuimicoFormBean.limpiarControles()}" />
+
 				</p:fieldset>
 
 
 				<p:dataTable id="dtMuestra"
 					value="#{fisoQuimicoFormBean.lstMuestraFisoQuimico }" var="mufi">
 
-					
-
-					<p:column headerText="nromuestra" style="width:100px" filterBy="#{mufi.nromuestra}"
-						filterMatchMode="contains" filterStyle="display:none">
+					<p:column headerText="nromuestra" style="width:100px"
+						filterBy="#{mufi.nromuestra}" filterMatchMode="contains"
+						filterStyle="display:none">
 						<p:outputLabel value="#{mufi.nromuestra }" />
 					</p:column>
-
-					
 
 					<p:column headerText="fecha" filterBy="#{mufi.fecha}"
 						filterMatchMode="contains" filterStyle="display:none">
