@@ -22,11 +22,7 @@ public class MuestraFisoQuimico implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idMuestraFisoQuimico;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="fecha", nullable=false)
-	private Date fecha;
-	
+		
 	@Column (name="nromuestra ", nullable=false)
 	private int nromuestra;
 	
@@ -43,6 +39,18 @@ public class MuestraFisoQuimico implements Serializable{
 	
 	@Column(name="muestrab", columnDefinition="Decimal(10,2)", nullable=false)
 	private double muestrab;
+	
+	@Column(name="muestrac", columnDefinition="Decimal(10,2)", nullable=false)
+	private double muestrac;
+	
+	@Column(name="muestrad", columnDefinition="Decimal(10,2)", nullable=false)
+	private double muestrad;
+	
+	@Column(name="muestrae", columnDefinition="Decimal(10,2)", nullable=false)
+	private double muestrae;
+	
+	@Column(name="muestraf", columnDefinition="Decimal(10,2)", nullable=false)
+	private double muestraf;
 	
 	@Column(name="volumen", columnDefinition="Decimal(10,2)", nullable=false)
 	private double volumen;
@@ -67,14 +75,6 @@ public class MuestraFisoQuimico implements Serializable{
 
 	public void setIdMuestraFisoQuimico(int idMuestraFisoQuimico) {
 		this.idMuestraFisoQuimico = idMuestraFisoQuimico;
-	}
-
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
 	}
 
 	public int getNromuestra() {
@@ -107,6 +107,38 @@ public class MuestraFisoQuimico implements Serializable{
 
 	public void setMuestrab(double muestrab) {
 		this.muestrab = muestrab;
+	}
+
+	public double getMuestrac() {
+		return muestrac;
+	}
+
+	public void setMuestrac(double muestrac) {
+		this.muestrac = muestrac;
+	}
+
+	public double getMuestrad() {
+		return muestrad;
+	}
+
+	public void setMuestrad(double muestrad) {
+		this.muestrad = muestrad;
+	}
+
+	public double getMuestrae() {
+		return muestrae;
+	}
+
+	public void setMuestrae(double muestrae) {
+		this.muestrae = muestrae;
+	}
+
+	public double getMuestraf() {
+		return muestraf;
+	}
+
+	public void setMuestraf(double muestraf) {
+		this.muestraf = muestraf;
 	}
 
 	public double getVolumen() {

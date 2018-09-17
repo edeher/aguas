@@ -28,13 +28,7 @@
 					<p:column headerText="id" style="width:30px" filterBy="#{mufi.idMuestraFisoQuimico}" filterMatchMode="contains" filterStyle="display:none">
 						<p:outputLabel value="#{mufi.idMuestraFisoQuimico}" />
 					</p:column>
-					
-					<p:column headerText="fecha"  filterBy="#{mufi.fecha}" filterMatchMode="contains" filterStyle="display:none">
-						<p:outputLabel value="#{mufi.fecha}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</p:outputLabel>
-					</p:column>
-					
+										
 					<p:column headerText="muestra a" filterBy="#{mufi.muestraa}" filterMatchMode="contains" filterStyle="display:none">
 						<p:outputLabel value="#{mufi.muestraa}" >
 						<f:convertNumber currencySymbol="" maxFractionDigits="2"
@@ -79,18 +73,23 @@
 
 						</p:selectOneMenu>
 						
-						<p:outputLabel value="Fecha "
-							style="font-weight: bold;" />
-						<p:calendar id="txtFecha"
-							value="#{muestraFisoQuimicoBean.muestrafisoquimico.fecha}" locale="es"
-							pattern="dd/MM/yyyy" mask="99/99/9999">
-						</p:calendar>
-
 						<p:outputLabel value="muestra a" style="font-weight:bold;" />
 						<p:inputNumber value="#{muestraFisoQuimicoBean.muestrafisoquimico.muestraa}" decimalSeparator="." thousandSeparator=","/>
 						
 						<p:outputLabel value="muestra b" style="font-weight:bold;" />
 						<p:inputNumber value="#{muestraFisoQuimicoBean.muestrafisoquimico.muestrab}" decimalSeparator="." thousandSeparator=","/>
+						
+						<p:outputLabel value="muestra c" style="font-weight:bold;" />
+						<p:inputNumber value="#{muestraFisoQuimicoBean.muestrafisoquimico.muestrac}" decimalSeparator="." thousandSeparator=","/>
+						
+						<p:outputLabel value="muestra d" style="font-weight:bold;" />
+						<p:inputNumber value="#{muestraFisoQuimicoBean.muestrafisoquimico.muestrad}" decimalSeparator="." thousandSeparator=","/>
+						
+						<p:outputLabel value="muestra e" style="font-weight:bold;" />
+						<p:inputNumber value="#{muestraFisoQuimicoBean.muestrafisoquimico.muestrae}" decimalSeparator="." thousandSeparator=","/>
+						
+						<p:outputLabel value="muestra f" style="font-weight:bold;" />
+						<p:inputNumber value="#{muestraFisoQuimicoBean.muestrafisoquimico.muestraf}" decimalSeparator="." thousandSeparator=","/>
 						
 						<p:outputLabel value="nromuestra" />
 						<p:inputText value="#{muestraFisoQuimicoBean.muestrafisoquimico.nromuestra}" />

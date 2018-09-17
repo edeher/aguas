@@ -12,8 +12,9 @@ import javax.inject.Named;
 import org.omnifaces.util.Faces;
 
 import com.unia.dao.IFisoQuimicoDAO;
-import com.unia.model.Bacterial;
 import com.unia.model.FisoQuimico;
+import com.unia.model.MuestraFisoQuimico;
+import com.unia.service.IMuestraFisoQuimicoService;
 import com.unia.util.MensajeManager;
 
 @Named
@@ -22,10 +23,15 @@ public class FisoQuimicoBean implements Serializable{
 
 	@Inject 
 	private FisoQuimico fisoquimico;
+	@Inject
+	private MuestraFisoQuimico muestrafisoquimico;
 	@Inject 
 	private IFisoQuimicoDAO servicefisicoquimico;
+	@Inject
+	private IMuestraFisoQuimicoService servicemuestrafisoquimico;
 	
 	private List<FisoQuimico> lstFisoQuimico;
+	private List<MuestraFisoQuimico> lstMuestraFisoQuimico;
 	private String titulo;
 	
 	
@@ -33,7 +39,9 @@ public class FisoQuimicoBean implements Serializable{
 	public void init() {
 		this.titulo="Nuevo";
 		lstFisoQuimico= new ArrayList<>();
+		
 		this.listarfisoquimico();
+		this.promedio();
 	}
 	
 	public void listarfisoquimico() {
@@ -75,7 +83,30 @@ public void seleccionarba(FisoQuimico fisoquimico1) {
 			MensajeManager.mostrarMensaje("Aviso", e.getMessage(), "FATAL");
 		}
 	}
-	
+	public void promedio() {
+		try {
+			double promedio=0;
+			for(FisoQuimico fiso2:this.lstFisoQuimico) {
+				
+				this.lstMuestraFisoQuimico=servicemuestrafisoquimico.listarPorFisoQuimico(fiso2);
+				double suma=0;
+				for(MuestraFisoQuimico mufi2:this.lstMuestraFisoQuimico) {
+					
+					suma +=mufi2.getOpsolidostotal();
+					
+				}
+				promedio=suma/12;
+				fiso2.setPromedio(promedio);
+				servicefisicoquimico.modificar(fiso2);				
+				
+			}
+			
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 	public FisoQuimico getFisoquimico() {
 		return fisoquimico;
 	}
@@ -93,6 +124,22 @@ public void seleccionarba(FisoQuimico fisoquimico1) {
 	}
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+
+	public MuestraFisoQuimico getMuestrafisoquimico() {
+		return muestrafisoquimico;
+	}
+
+	public void setMuestrafisoquimico(MuestraFisoQuimico muestrafisoquimico) {
+		this.muestrafisoquimico = muestrafisoquimico;
+	}
+
+	public List<MuestraFisoQuimico> getLstMuestraFisoQuimico() {
+		return lstMuestraFisoQuimico;
+	}
+
+	public void setLstMuestraFisoQuimico(List<MuestraFisoQuimico> lstMuestraFisoQuimico) {
+		this.lstMuestraFisoQuimico = lstMuestraFisoQuimico;
 	}
 	
 	

@@ -15,52 +15,14 @@
 			<h:form id="frm">
 				<p:fieldset id="pgMuestra" legend="#{fisoQuimicoFormBean.titulo}"
 					toggleable="true">
-					<p:panelGrid columns="2">
+					<p:panelGrid columns="4">
+
+
 						<p:panelGrid columns="2">
+
 							<p:outputLabel value="nromuestra" />
 							<p:outputLabel
 								value="#{fisoQuimicoFormBean.muestrafisoquimico.nromuestra}" />
-
-
-
-							<p:outputLabel value="Fecha " style="font-weight: bold;" />
-							<p:calendar id="txtFecha"
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.fecha}"
-								locale="es" pattern="dd/MM/yyyy" mask="99/99/9999">
-							</p:calendar>
-
-							<p:outputLabel value="muestra a" style="font-weight:bold;" />
-							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.muestraa}"
-								decimalSeparator="." thousandSeparator="," />
-
-							<p:outputLabel value="muestra b" style="font-weight:bold;" />
-							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.muestrab}"
-								decimalSeparator="." thousandSeparator="," />
-
-
-
-							<p:outputLabel value="dop solidos fijos"
-								style="font-weight:bold;" />
-							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.opsolidosfijo}"
-								decimalSeparator="." thousandSeparator="," />
-
-						</p:panelGrid>
-						<p:panelGrid columns="2">
-
-							<p:outputLabel value="op solidos totales"
-								style="font-weight:bold;" />
-							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.opsolidostotal}"
-								decimalSeparator="." thousandSeparator="," />
-
-							<p:outputLabel value="op solidos volatil"
-								style="font-weight:bold;" />
-							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.opsolidosvolatil}"
-								decimalSeparator="." thousandSeparator="," />
 
 							<p:outputLabel value="ph" style="font-weight:bold;" />
 							<p:inputNumber
@@ -70,14 +32,70 @@
 							<p:outputLabel value="temperatura" style="font-weight:bold;" />
 							<p:inputNumber
 								value="#{fisoQuimicoFormBean.muestrafisoquimico.temperatura}"
-								decimalSeparator="." thousandSeparator="," />
+								decimalSeparator="." thousandSeparator="," symbol="°C" symbolPosition="s"/>
 
 							<p:outputLabel value="volumen" style="font-weight:bold;" />
 							<p:inputNumber
 								value="#{fisoQuimicoFormBean.muestrafisoquimico.volumen}"
-								decimalSeparator="." thousandSeparator="," />
+								decimalSeparator="." thousandSeparator="," symbol="ml" symbolPosition="s"/>
+						</p:panelGrid>
+
+
+						<p:panelGrid columns="2">
+
+							<p:outputLabel value="muestra a" style="font-weight:bold;"  />
+							<p:inputNumber
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.muestraa}"
+								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s" />
+
+							<p:outputLabel value="muestra b" style="font-weight:bold;" />
+							<p:inputNumber
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.muestrab}"
+								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s"/>
+
+							<p:outputLabel value="op solidos fijos" style="font-weight:bold;"/>
+							<p:outputLabel
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.opsolidosfijo} mg/L" style="font-weight:bold;"/>	
 
 						</p:panelGrid>
+						<p:panelGrid columns="2">
+
+							<p:outputLabel value="muestra c" style="font-weight:bold;" />
+							<p:inputNumber
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.muestrac}"
+								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s"/>
+
+							<p:outputLabel value="muestra d" style="font-weight:bold;" />
+							<p:inputNumber
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.muestrad}"
+								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s"/>
+
+							<p:outputLabel value="op solidos totales" style="font-weight:bold;"/>
+							<p:outputLabel
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.opsolidostotal} mg/L" style="font-weight:bold;"/>	
+								
+					</p:panelGrid>
+						<p:panelGrid columns="2">
+							<p:outputLabel value="muestra e" style="font-weight:bold;" />
+							<p:inputNumber
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.muestrae}"
+								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s"/>
+
+							<p:outputLabel value="muestra f" style="font-weight:bold;" />
+							<p:inputNumber
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.muestraf}"
+								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s"/>
+
+													
+							<p:outputLabel value="op solidos volatil" style="font-weight:bold;"/>
+							<p:outputLabel
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.opsolidosvolatil} mg/L" style="font-weight:bold;" />
+
+						</p:panelGrid>
+
+
+
+
 						<p:commandButton value="Aceptar"
 							actionListener="#{fisoQuimicoFormBean.operar()}"
 							update="dtMuestra, pgMuestra" />
@@ -100,34 +118,25 @@
 						<p:outputLabel value="#{mufi.nromuestra }" />
 					</p:column>
 
-					<p:column headerText="fecha" filterBy="#{mufi.fecha}"
+					<p:column headerText="Solidos Fijos" filterBy="#{mufi.opsolidosfijo}"
 						filterMatchMode="contains" filterStyle="display:none">
-						<p:outputLabel value="#{mufi.fecha}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</p:outputLabel>
-					</p:column>
-
-					<p:column headerText="muestra a" filterBy="#{mufi.muestraa}"
-						filterMatchMode="contains" filterStyle="display:none">
-						<p:outputLabel value="#{mufi.muestraa}">
+						<p:outputLabel value="#{mufi.opsolidosfijo} mg/L">
 							<f:convertNumber currencySymbol="" maxFractionDigits="2"
 								maxIntegerDigits="10" type="currency" locale="true" />
 						</p:outputLabel>
 					</p:column>
 
-					<p:column headerText="muestra b" filterBy="#{mufi.muestrab}"
+					<p:column headerText="Solidos Volatiles" filterBy="#{mufi.opsolidosvolatil}"
 						filterMatchMode="contains" filterStyle="display:none">
-						<p:outputLabel value="#{mufi.muestrab}">
-							<f:convertNumber currencySymbol="" maxFractionDigits="2"
-								maxIntegerDigits="10" type="currency" locale="true" />
-						</p:outputLabel>
+						<p:outputLabel
+								value="#{mufi.opsolidosvolatil} mg/L"  />
 					</p:column>
 
 
-					<p:column headerText="fisoquimico"
-						filterBy="#{mufi.fisoquimico.idFisoQuimico}"
+					<p:column headerText="Solidos Totales"
+						filterBy="#{mufi.opsolidostotal}"
 						filterMatchMode="contains" filterStyle="display:none">
-						<p:outputLabel value="#{mufi.fisoquimico.idFisoQuimico}" />
+						<p:outputLabel value="#{mufi.opsolidostotal} mg/L" />
 					</p:column>
 
 

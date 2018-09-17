@@ -20,28 +20,25 @@
 						<p:outputLabel value="Nro Muestra" style="font-weight:bold;" />
 						<p:outputLabel value="#{quimicoFormBean.muestraquimico.nromuestra}" style="font-weight:bold;"  />
 						
-						<p:outputLabel value="cromo v" style="font-weight:bold;" />
-						<p:inputNumber value="#{quimicoFormBean.muestraquimico.cromov}" decimalSeparator="." thousandSeparator=","/>
+						
+						<p:outputLabel value="volumen" style="font-weight:bold;" />
+						<p:inputNumber value="#{quimicoFormBean.muestraquimico.volumen}" decimalSeparator="." thousandSeparator="," symbol=" mg/L" symbolPosition="s"/>
+						
 						
 						<p:outputLabel value="dato a" style="font-weight:bold;" />
-						<p:inputNumber value="#{quimicoFormBean.muestraquimico.datoa}" decimalSeparator="." thousandSeparator=","/>
+						<p:inputNumber value="#{quimicoFormBean.muestraquimico.datoa}" decimalSeparator="." thousandSeparator="," symbol=" ml" symbolPosition="s"/>
 						
 						<p:outputLabel value="dato b" style="font-weight:bold;" />
-						<p:inputNumber value="#{quimicoFormBean.muestraquimico.datob}" decimalSeparator="." thousandSeparator=","/>
+						<p:inputNumber value="#{quimicoFormBean.muestraquimico.datob}" decimalSeparator="." thousandSeparator="," symbol=" ml" symbolPosition="s"/>
 						
-						<p:outputLabel value="demanda bioquimica" style="font-weight:bold;" />
-						<p:inputNumber value="#{quimicoFormBean.muestraquimico.demandabioquimica}" decimalSeparator="." thousandSeparator=","/>
 						
+						<p:outputLabel value="op demanda quimica de oxigeno" style="font-weight:bold;" />
+						<p:inputNumber value="#{quimicoFormBean.muestraquimico.opdemandaoxigeno}" decimalSeparator="." thousandSeparator="," symbol=" mg d'O/L" symbolPosition="s"/>
 						
 						
 					</p:panelGrid>
 					<p:panelGrid columns="2">
-					<p:outputLabel value="Fecha "
-							style="font-weight: bold;" />
-						<p:calendar id="txtFecha"
-							value="#{quimicoFormBean.muestraquimico.fecha}" locale="es"
-							pattern="dd/MM/yyyy" mask="99/99/9999">
-						</p:calendar>
+					
 						<p:outputLabel value="fosforos" style="font-weight:bold;" />
 						<p:inputNumber value="#{quimicoFormBean.muestraquimico.fosforos}" decimalSeparator="." thousandSeparator=","/>
 						
@@ -54,43 +51,48 @@
 						<p:outputLabel value="nitrogeno amoniaco" style="font-weight:bold;" />
 						<p:inputNumber value="#{quimicoFormBean.muestraquimico.nitrogenoamoniaca}" decimalSeparator="." thousandSeparator=","/>
 						
+						<p:outputLabel value="nna 3" style="font-weight:bold;" />
+						<p:inputNumber value="#{quimicoFormBean.muestraquimico.nna3}" decimalSeparator="." thousandSeparator=","/>
 						
 						
 					</p:panelGrid>
 					<p:panelGrid columns="2">
-					<p:outputLabel value="nna 3" style="font-weight:bold;" />
-						<p:inputNumber value="#{quimicoFormBean.muestraquimico.nna3}" decimalSeparator="." thousandSeparator=","/>
-						
+					
 						<p:outputLabel value="norg" style="font-weight:bold;" />
 						<p:inputNumber value="#{quimicoFormBean.muestraquimico.norg}" decimalSeparator="." thousandSeparator=","/>
 						
-						
-						
-						<p:outputLabel value="opdemanda de oxigeno" style="font-weight:bold;" />
-						<p:inputNumber value="#{quimicoFormBean.muestraquimico.opdemandaoxigeno}" decimalSeparator="." thousandSeparator=","/>
-						
-						<p:outputLabel value="op grasas yaceites" style="font-weight:bold;" />
-						<p:inputNumber value="#{quimicoFormBean.muestraquimico.opgrasasaceites}" decimalSeparator="." thousandSeparator=","/>
-						
-						<p:outputLabel value="op nitratos" style="font-weight:bold;" />
-						<p:inputNumber value="#{quimicoFormBean.muestraquimico.opnitratos}" decimalSeparator="." thousandSeparator=","/>
-						
-					</p:panelGrid>
-					<p:panelGrid columns="2">
-						<p:outputLabel value="op ntr" style="font-weight:bold;" />
-						<p:inputNumber value="#{quimicoFormBean.muestraquimico.opntr}" decimalSeparator="." thousandSeparator=","/>
-						
-						<p:outputLabel value="p1" style="font-weight:bold;" />
-						<p:inputNumber value="#{quimicoFormBean.muestraquimico.p1}" decimalSeparator="." thousandSeparator=","/>
+						<p:outputLabel value="demanda bioquimica" style="font-weight:bold;" />
+						<p:inputNumber value="#{quimicoFormBean.muestraquimico.demandabioquimica}" decimalSeparator="." thousandSeparator=","/>
 						
 						<p:outputLabel value="ppmno3" style="font-weight:bold;" />
 						<p:inputNumber value="#{quimicoFormBean.muestraquimico.ppmno3}" decimalSeparator="." thousandSeparator=","/>
-						
-						<p:outputLabel value="volumen" style="font-weight:bold;" />
-						<p:inputNumber value="#{quimicoFormBean.muestraquimico.volumen}" decimalSeparator="." thousandSeparator=","/>
-						
+									
 						<p:outputLabel value="volumen final" style="font-weight:bold;" />
 						<p:inputNumber value="#{quimicoFormBean.muestraquimico.volumenfinal}" decimalSeparator="." thousandSeparator=","/>
+						
+						<p:outputLabel value="op nitratos" style="font-weight:bold;" />
+						<p:inputNumber value="#{quimicoFormBean.muestraquimico.opnitratos}" decimalSeparator="." thousandSeparator="," symbol=" mg/L" symbolPosition="s"/>
+						
+						
+						
+					</p:panelGrid>
+					<p:panelGrid columns="2">
+						
+						<p:outputLabel value="p1" style="font-weight:bold;" />
+						<p:inputNumber value="#{quimicoFormBean.muestraquimico.p1}" decimalSeparator="." thousandSeparator="," symbol=" mg" symbolPosition="s"/>
+						
+						<p:outputLabel value="p2" style="font-weight:bold;" />
+						<p:inputNumber value="#{quimicoFormBean.muestraquimico.p2}" decimalSeparator="." thousandSeparator="," symbol=" mg" symbolPosition="s"/>
+						
+						<p:outputLabel value="op grasas yaceites" style="font-weight:bold;" />
+						<p:inputNumber value="#{quimicoFormBean.muestraquimico.opgrasasaceites}" decimalSeparator="." thousandSeparator="," symbol=" mg d'GrA/L" symbolPosition="s"/>
+						
+						<p:outputLabel value="op ntr" style="font-weight:bold;" />
+						<p:inputNumber value="#{quimicoFormBean.muestraquimico.opntr}" decimalSeparator="." thousandSeparator=","/>
+						
+						<p:outputLabel value="cromo v" style="font-weight:bold;" />
+						<p:inputNumber value="#{quimicoFormBean.muestraquimico.cromov}" decimalSeparator="." thousandSeparator=","/>
+						
 						
 					</p:panelGrid>
 						
@@ -121,23 +123,24 @@
 					
 					
 					
-					<p:column headerText="cromo v" filterBy="#{muqi.cromov}" filterMatchMode="contains" filterStyle="display:none">
-						<p:outputLabel value="#{muqi.cromov}" >
+					<p:column headerText="Volumen" filterBy="#{muqi.volumen}" filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{muqi.volumen} mg/L" >
 						<f:convertNumber currencySymbol="" maxFractionDigits="2"
-							maxIntegerDigits="10" type="currency" locale="true"/>
+							maxIntegerDigits="10" type="currency" locale="true" />
 						</p:outputLabel>
 					</p:column>
-					<p:column headerText="fecha"  filterBy="#{muqi.fecha}" filterMatchMode="contains" filterStyle="display:none">
-						<p:outputLabel value="#{muqi.fecha}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</p:outputLabel>
+										
+					<p:column headerText="Demanda de oxigeno" filterBy="#{muqi.opdemandaoxigeno}" filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{muqi.opdemandaoxigeno} mg/L" />
 					</p:column>
 					
-					
-					<p:column headerText="quimico" filterBy="#{muqi.quimico.idQuimico}" filterMatchMode="contains" filterStyle="display:none">
-						<p:outputLabel value="#{muqi.quimico.idQuimico}" />
+						<p:column headerText="Nitratos" filterBy="#{muqi.opnitratos}" filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{muqi.opnitratos} mg/L" />
 					</p:column>
-
+					
+						<p:column headerText="Grasas y Aceites" filterBy="#{muqi.opgrasasaceites}" filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{muqi.opgrasasaceites} mg d'GrA/L" />
+					</p:column>
 
 					<p:column style="width:30px">
 						<p:commandLink

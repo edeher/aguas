@@ -12,7 +12,9 @@ import javax.inject.Named;
 import org.omnifaces.util.Faces;
 
 import com.unia.model.Bacterial;
+import com.unia.model.MuestraBacterial;
 import com.unia.service.IBacterialService;
+import com.unia.service.IMuestraBacterialService;
 import com.unia.util.MensajeManager;
 
 @Named
@@ -22,19 +24,24 @@ public class BacterialBean implements Serializable {
 	@Inject
 	private Bacterial bacterial;
 	@Inject
+	private MuestraBacterial muestrabacteral;
+	@Inject
 	private IBacterialService servicebacterial;
+	@Inject
+	private IMuestraBacterialService servicemuestrabacterial;
 
 	private List<Bacterial> lstBacterial;
+	private List<MuestraBacterial> lstMuestraBacterial;
 	private String titulo;
 
-	
 	@PostConstruct
 	public void init() {
-		this.titulo="Nuevo";
-		lstBacterial= new ArrayList<>();
+		this.titulo = "Nuevo";
+		lstBacterial = new ArrayList<>();
 		this.listarBacterial();
+		this.promedio();
 	}
-	
+
 	public void seleccionar(Bacterial t) {
 		try {
 			this.bacterial = servicebacterial.listarPorId(t);
@@ -45,8 +52,9 @@ public class BacterialBean implements Serializable {
 
 		}
 	}
+
 	public void seleccionarba(Bacterial bacterial1) {
-		
+
 		Faces.setFlashAttribute("bacterial1", bacterial1);
 	}
 
@@ -74,6 +82,29 @@ public class BacterialBean implements Serializable {
 		}
 	}
 
+	public void promedio() {
+
+		try {
+			double promedio=0;
+			for (Bacterial bac2 : this.lstBacterial) {
+
+				this.lstMuestraBacterial = servicemuestrabacterial.listarPorBacterial(bac2);
+				double suma=0;
+				for(MuestraBacterial mubac2:this.lstMuestraBacterial) {
+					
+					suma +=mubac2.getColiformes();
+				}
+				promedio=suma/12;
+				bac2.setPromedio(promedio);
+				servicebacterial.modificar(bac2);
+				
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+
 	public Bacterial getBacterial() {
 		return bacterial;
 	}
@@ -96,6 +127,22 @@ public class BacterialBean implements Serializable {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+
+	public MuestraBacterial getMuestrabacteral() {
+		return muestrabacteral;
+	}
+
+	public void setMuestrabacteral(MuestraBacterial muestrabacteral) {
+		this.muestrabacteral = muestrabacteral;
+	}
+
+	public List<MuestraBacterial> getLstMuestraBacterial() {
+		return lstMuestraBacterial;
+	}
+
+	public void setLstMuestraBacterial(List<MuestraBacterial> lstMuestraBacterial) {
+		this.lstMuestraBacterial = lstMuestraBacterial;
 	}
 
 }

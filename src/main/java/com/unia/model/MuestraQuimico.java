@@ -23,10 +23,6 @@ public class MuestraQuimico implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idMuestraQuimico;
 	
-	@Temporal(TemporalType.DATE)
-	@Column(name="fecha", nullable=false)
-	private Date fecha;
-	
 	@Column (name="nromuestra ", nullable=false)
 	private int nromuestra;
 	
@@ -57,6 +53,9 @@ public class MuestraQuimico implements Serializable{
 	
 	@Column(name="p1", columnDefinition="Decimal(10,2)", nullable=false)
 	private double p1;
+	
+	@Column(name="p2", columnDefinition="Decimal(10,2)", nullable=false)
+	private double p2;
 	
 	@Column(name="nitrogenoamoniaca", columnDefinition="Decimal(10,2)", nullable=false)
 	private double nitrogenoamoniaca;
@@ -96,14 +95,6 @@ public class MuestraQuimico implements Serializable{
 
 	public void setIdMuestraQuimico(int idMuestraQuimico) {
 		this.idMuestraQuimico = idMuestraQuimico;
-	}
-
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
 	}
 
 	public int getNromuestra() {
@@ -177,6 +168,14 @@ public class MuestraQuimico implements Serializable{
 
 	public void setP1(double p1) {
 		this.p1 = p1;
+	}
+
+	public double getP2() {
+		return p2;
+	}
+
+	public void setP2(double p2) {
+		this.p2 = p2;
 	}
 
 	public double getNitrogenoamoniaca() {

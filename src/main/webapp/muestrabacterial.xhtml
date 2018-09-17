@@ -38,11 +38,7 @@
 							maxIntegerDigits="10" type="currency" locale="true"/>
 						</p:outputLabel>
 					</p:column>
-					<p:column headerText="fecha"  filterBy="#{muba.fecha}" filterMatchMode="contains" filterStyle="display:none">
-						<p:outputLabel value="#{muba.fecha}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</p:outputLabel>
-					</p:column>
+					
 					<p:column headerText="nromuestra" filterBy="#{muba.nromuestra}" filterMatchMode="contains" filterStyle="display:none">
 						<p:outputLabel value="#{muba.nromuestra }" />
 					</p:column>
@@ -78,15 +74,7 @@
 
 						<p:outputLabel value="coliformes" style="font-weight:bold;" />
 						<p:inputNumber value="#{muestraBacterialBean.muestrabacterial.coliformes}" decimalSeparator="." thousandSeparator=","/>
-						
-						<p:outputLabel value="Fecha "
-							style="font-weight: bold;" />
-						<p:calendar id="txtFecha"
-							value="#{muestraBacterialBean.muestrabacterial.fecha}" locale="es"
-							pattern="dd/MM/yyyy" mask="99/99/9999">
-
-						</p:calendar>
-						
+												
 						<p:outputLabel value="nromuestra" />
 						<p:inputText value="#{muestraBacterialBean.muestrabacterial.nromuestra}" />
 					</p:panelGrid>

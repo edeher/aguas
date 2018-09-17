@@ -55,7 +55,6 @@ public class QuimicoFormBean implements Serializable{
 		this.muestraquimico.setDatoa((short)0);
 		this.muestraquimico.setDatob((short)0);
 		this.muestraquimico.setDemandabioquimica((short)0);
-		this.muestraquimico.setFecha(null);
 		this.muestraquimico.setFosforos((short)0);
 		this.muestraquimico.setMercurio((short)0);
 		this.muestraquimico.setMetales((short)0);
@@ -68,6 +67,7 @@ public class QuimicoFormBean implements Serializable{
 		this.muestraquimico.setOpnitratos((short)0);
 		this.muestraquimico.setOpntr((short)0);
 		this.muestraquimico.setP1((short)0);
+		this.muestraquimico.setP2((short)0);
 		this.muestraquimico.setPpmno3((short)0);
 		this.muestraquimico.setVolumen((short)0);
 		this.muestraquimico.setVolumenfinal((short)0);
@@ -98,6 +98,7 @@ public class QuimicoFormBean implements Serializable{
 				muestraquimico.setQuimico(qui1);
 				servicemuestraquimico.modificar(muestraquimico);
 				MensajeManager.mostrarMensaje("Aviso", "Modificación Exitosa", "INFO");
+				this.listarMuestraQuimico(qui1);
 			}else {
 				
 				
@@ -111,6 +112,7 @@ public class QuimicoFormBean implements Serializable{
 					muestraquimico.setQuimico(qui1);
 					servicemuestraquimico.registrar(muestraquimico);
 					MensajeManager.mostrarMensaje("Aviso", "Registro Exitoso", "INFO");
+					this.listarMuestraQuimico(qui1);
 				}
 				
 				

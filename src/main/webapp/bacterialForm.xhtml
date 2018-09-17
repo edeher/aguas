@@ -16,41 +16,25 @@
 					toggleable="true">
 					<p:panelGrid columns="2">
 						<p:outputLabel value="nromuestra" />
-						<p:outputLabel value="#{bacterialFormBean.muestrabacterial.nromuestra}" />
-						
+						<p:outputLabel
+							value="#{bacterialFormBean.muestrabacterial.nromuestra}" />
 						<p:outputLabel value="canthuehelmintos" />
 						<p:inputText
 							value="#{bacterialFormBean.muestrabacterial.canthuehelmintos}" />
-
 						<p:outputLabel value="coliformes" style="font-weight:bold;" />
 						<p:inputNumber
 							value="#{bacterialFormBean.muestrabacterial.coliformes}"
 							decimalSeparator="." thousandSeparator="," />
-
-						<p:outputLabel value="Fecha " style="font-weight: bold;" />
-						<p:calendar id="txtFecha"
-							value="#{bacterialFormBean.muestrabacterial.fecha}" locale="es"
-							pattern="dd/MM/yyyy" mask="99/99/9999">
-
-						</p:calendar>
-
-
-
 						<p:commandButton value="Aceptar"
-							actionListener="#{bacterialFormBean.operar()}"
-							update="dtMuestra, pgMuestra" />
-
+							actionListener="#{bacterialFormBean.operar()}" update="dtMuestra,pgMuestra" />
 						<p:commandButton value="Cancelar" global="false"
 							update="pgMuestra"
 							rendered="#{bacterialFormBean.titulo eq 'Modificar'}"
 							actionListener="#{bacterialFormBean.limpiarControles()}" />
 					</p:panelGrid>
 				</p:fieldset>
-
-
 				<p:dataTable id="dtMuestra"
 					value="#{bacterialFormBean.lstMuestraBacterial}" var="muba">
-
 					<f:facet name="header">
 						<p:outputPanel>
 							<h:outputText value="Buscar:" />
@@ -59,13 +43,14 @@
 								style="width:150px" placeholder="Ingrese una palabra" />
 						</p:outputPanel>
 					</f:facet>
-					
-					<p:column headerText="nromuestra" style="width:100px" filterBy="#{muba.nromuestra}"
-						filterMatchMode="contains" filterStyle="display:none">
+
+					<p:column headerText="nromuestra" style="width:100px"
+						filterBy="#{muba.nromuestra}" filterMatchMode="contains"
+						filterStyle="display:none">
 						<p:outputLabel value="#{muba.nromuestra }" />
 					</p:column>
-					
-					
+
+
 					<p:column headerText="canthuehelmintos"
 						filterBy="#{muba.canthuehelmintos}" filterMatchMode="contains"
 						filterStyle="display:none">
@@ -78,16 +63,6 @@
 								maxIntegerDigits="10" type="currency" locale="true" />
 						</p:outputLabel>
 					</p:column>
-					<p:column headerText="fecha" filterBy="#{muba.fecha}"
-						filterMatchMode="contains" filterStyle="display:none">
-						<p:outputLabel value="#{muba.fecha}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</p:outputLabel>
-					</p:column>
-					
-
-
-
 					<p:column style="width:30px">
 						<p:commandLink
 							actionListener="#{bacterialFormBean.seleccionar(muba)}"

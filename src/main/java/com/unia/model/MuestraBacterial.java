@@ -22,11 +22,7 @@ public class MuestraBacterial implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idMuestraBacterial;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="fecha", nullable=false)
-	private Date fecha;
-	
+		
 	@Column (name="nromuestra ", nullable=false)
 	private int nromuestra;
 	
@@ -46,14 +42,6 @@ public class MuestraBacterial implements Serializable{
 
 	public void setIdMuestraBacterial(int idMuestraBacterial) {
 		this.idMuestraBacterial = idMuestraBacterial;
-	}
-
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
 	}
 
 	public int getNromuestra() {
