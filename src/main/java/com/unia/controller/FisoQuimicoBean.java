@@ -41,7 +41,7 @@ public class FisoQuimicoBean implements Serializable{
 		lstFisoQuimico= new ArrayList<>();
 		
 		this.listarfisoquimico();
-		this.promedio();
+//		this.promedio();
 	}
 	
 	public void listarfisoquimico() {
@@ -83,30 +83,30 @@ public void seleccionarba(FisoQuimico fisoquimico1) {
 			MensajeManager.mostrarMensaje("Aviso", e.getMessage(), "FATAL");
 		}
 	}
-	public void promedio() {
-		try {
-			double promedio=0;
-			for(FisoQuimico fiso2:this.lstFisoQuimico) {
-				
-				this.lstMuestraFisoQuimico=servicemuestrafisoquimico.listarPorFisoQuimico(fiso2);
-				double suma=0;
-				for(MuestraFisoQuimico mufi2:this.lstMuestraFisoQuimico) {
-					
-					suma +=mufi2.getOpsolidostotal();
-					
-				}
-				promedio=suma/12;
-				fiso2.setPromedio(promedio);
-				servicefisicoquimico.modificar(fiso2);				
-				
-			}
-			
-			
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
+//	public void promedio() {
+//		try {
+//			double promedio=0;
+//			for(FisoQuimico fiso2:this.lstFisoQuimico) {
+//				
+//				this.lstMuestraFisoQuimico=servicemuestrafisoquimico.listarPorFisoQuimico(fiso2);
+//				double suma=0;
+//				for(MuestraFisoQuimico mufi2:this.lstMuestraFisoQuimico) {
+//					
+//					suma +=mufi2.getOpsolidostotal();
+//					
+//				}
+//				promedio=suma/12;
+//				fiso2.setPromedio(promedio);
+//				servicefisicoquimico.modificar(fiso2);				
+//				
+//			}
+//			
+//			
+//			
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//	}
 	public FisoQuimico getFisoquimico() {
 		return fisoquimico;
 	}

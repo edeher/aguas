@@ -28,8 +28,7 @@ public class FisoQuimico implements Serializable{
 	@Column(name="fecha", nullable=false)
 	private Date fecha;
 	
-	@Column(name="promedio", columnDefinition="Decimal(10,2)", nullable=false)
-	private double promedio;
+	
 	
 	@OneToMany(mappedBy = "fisoquimico", cascade = { CascadeType.PERSIST, CascadeType.MERGE,
 			CascadeType.REMOVE }, fetch = FetchType.EAGER, orphanRemoval = true)
@@ -52,15 +51,6 @@ public class FisoQuimico implements Serializable{
 		this.fecha = fecha;
 	}
 	
-	
-	public double getPromedio() {
-		return promedio;
-	}
-
-	public void setPromedio(double promedio) {
-		this.promedio = promedio;
-	}
-
 	public List<MuestraFisoQuimico> getMuestrasfisoquimico() {
 		return muestrasfisoquimico;
 	}

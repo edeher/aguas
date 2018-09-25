@@ -53,16 +53,57 @@ public class FisoQuimicoFormBean implements Serializable {
 	public void limpiarControles() {
 		this.titulo = "Nuevo";
 		this.muestrafisoquimico.setIdMuestraFisoQuimico((short) 0);
-		this.muestrafisoquimico.setMuestraa((short) 0);
-		this.muestrafisoquimico.setMuestrab((short) 0);
-		this.muestrafisoquimico.setMuestrac((short) 0);
-		this.muestrafisoquimico.setMuestrad((short) 0);
-		this.muestrafisoquimico.setMuestrae((short) 0);
-		this.muestrafisoquimico.setMuestraf((short) 0);
+
+		this.muestrafisoquimico.setPf1((short) 0);
+		this.muestrafisoquimico.setPi1((short) 0);
+		this.muestrafisoquimico.setPc1((short) 0);
+
+		this.muestrafisoquimico.setPf2((short) 0);
+		this.muestrafisoquimico.setPi2((short) 0);
+		this.muestrafisoquimico.setPc2((short) 0);
+
+		this.muestrafisoquimico.setPf3((short) 0);
+		this.muestrafisoquimico.setPi3((short) 0);
+		this.muestrafisoquimico.setPc3((short) 0);
+
+		this.muestrafisoquimico.setPf4((short) 0);
+		this.muestrafisoquimico.setPi4((short) 0);
+		this.muestrafisoquimico.setPc4((short) 0);
+
+		this.muestrafisoquimico.setPf5((short) 0);
+		this.muestrafisoquimico.setPi5((short) 0);
+		this.muestrafisoquimico.setPc5((short) 0);
+
+		this.muestrafisoquimico.setPf6((short) 0);
+		this.muestrafisoquimico.setPi6((short) 0);
+		this.muestrafisoquimico.setPc6((short) 0);
+
 		this.muestrafisoquimico.setNromuestra((short) 0);
-		this.muestrafisoquimico.setOpsolidosfijo((short) 0);
-		this.muestrafisoquimico.setOpsolidostotal((short) 0);
-		this.muestrafisoquimico.setOpsolidosvolatil((short) 0);
+
+		this.muestrafisoquimico.setOpsolidosfijo1((short) 0);
+		this.muestrafisoquimico.setOpsolidostotal1((short) 0);
+		this.muestrafisoquimico.setOpsolidosvolatil1((short) 0);
+
+		this.muestrafisoquimico.setOpsolidosfijo2((short) 0);
+		this.muestrafisoquimico.setOpsolidostotal2((short) 0);
+		this.muestrafisoquimico.setOpsolidosvolatil2((short) 0);
+
+		this.muestrafisoquimico.setOpsolidosfijo3((short) 0);
+		this.muestrafisoquimico.setOpsolidostotal3((short) 0);
+		this.muestrafisoquimico.setOpsolidosvolatil3((short) 0);
+
+		this.muestrafisoquimico.setOpsolidosfijo4((short) 0);
+		this.muestrafisoquimico.setOpsolidostotal4((short) 0);
+		this.muestrafisoquimico.setOpsolidosvolatil4((short) 0);
+
+		this.muestrafisoquimico.setOpsolidosfijo5((short) 0);
+		this.muestrafisoquimico.setOpsolidostotal5((short) 0);
+		this.muestrafisoquimico.setOpsolidosvolatil5((short) 0);
+
+		this.muestrafisoquimico.setOpsolidosfijo6((short) 0);
+		this.muestrafisoquimico.setOpsolidostotal6((short) 0);
+		this.muestrafisoquimico.setOpsolidosvolatil6((short) 0);
+
 		this.muestrafisoquimico.setPh((short) 0);
 		this.muestrafisoquimico.setTemperatura((short) 0);
 		this.muestrafisoquimico.setVolumen((short) 0);
@@ -95,7 +136,7 @@ public class FisoQuimicoFormBean implements Serializable {
 				this.calculooperaciones();
 				this.listarMuestraFisoquimico(fiso1);
 				this.limpiarControles();
-				
+
 			} else {
 
 				List<MuestraFisoQuimico> mufiso1 = this.lstMuestraFisoQuimico;
@@ -111,7 +152,7 @@ public class FisoQuimicoFormBean implements Serializable {
 					this.calculooperaciones();
 					this.listarMuestraFisoquimico(fiso1);
 					this.limpiarControles();
-					
+
 				}
 
 			}
@@ -137,21 +178,74 @@ public class FisoQuimicoFormBean implements Serializable {
 		try {
 			FisoQuimico fiso3 = this.fisoquimico;
 			this.lstMuestraFisoQuimico = servicemuestrafisoquimico.listarPorFisoQuimico(fiso3);
-			double sototal = 0, sofijo = 0, sovolatil=0;
+			double sototal1 = 0, sofijo1 = 0, sovolatil1 = 0, sototal2 = 0, sofijo2 = 0, sovolatil2 = 0, sototal3 = 0,
+					sofijo3 = 0, sovolatil3 = 0, sototal4 = 0, sofijo4 = 0, sovolatil4 = 0, sototal5 = 0, sofijo5 = 0,
+					sovolatil5 = 0, sototal6 = 0, sofijo6 = 0, sovolatil6 = 0, promediototal=0,promediofijo=0, promediovolatil=0;
 			for (MuestraFisoQuimico mufiso : this.lstMuestraFisoQuimico) {
+
+				sofijo1 = ((mufiso.getPi1() - mufiso.getPf1()) * 1000) / mufiso.getVolumen();
+				sototal1 = ((mufiso.getPf1() - mufiso.getPc1()) * 1000) / mufiso.getVolumen();
+				sovolatil1 = ((mufiso.getPf1() - mufiso.getPc1()) * 1000) / mufiso.getVolumen();
+				
+				sofijo2 = ((mufiso.getPi2() - mufiso.getPf2()) * 1000) / mufiso.getVolumen();
+				sototal2 = ((mufiso.getPf2() - mufiso.getPc2()) * 1000) / mufiso.getVolumen();
+				sovolatil2 = ((mufiso.getPf2() - mufiso.getPc2()) * 1000) / mufiso.getVolumen();
+				
+				sofijo3 = ((mufiso.getPi3() - mufiso.getPf3()) * 1000) / mufiso.getVolumen();
+				sototal3 = ((mufiso.getPf3() - mufiso.getPc3()) * 1000) / mufiso.getVolumen();
+				sovolatil3 = ((mufiso.getPf3() - mufiso.getPc3()) * 1000) / mufiso.getVolumen();
+				
+				sofijo4 = ((mufiso.getPi4() - mufiso.getPf4()) * 1000) / mufiso.getVolumen();
+				sototal4 = ((mufiso.getPf4() - mufiso.getPc4()) * 1000) / mufiso.getVolumen();
+				sovolatil4 = ((mufiso.getPf4() - mufiso.getPc4()) * 1000) / mufiso.getVolumen();
+				
+				sofijo5 = ((mufiso.getPi5() - mufiso.getPf5()) * 1000) / mufiso.getVolumen();
+				sototal5 = ((mufiso.getPf5() - mufiso.getPc5()) * 1000) / mufiso.getVolumen();
+				sovolatil5 = ((mufiso.getPf5() - mufiso.getPc5()) * 1000) / mufiso.getVolumen();
+				
+				sofijo6 = ((mufiso.getPi6() - mufiso.getPf6()) * 1000) / mufiso.getVolumen();
+				sototal6 = ((mufiso.getPf6() - mufiso.getPc6()) * 1000) / mufiso.getVolumen();
+				sovolatil6 = ((mufiso.getPf6() - mufiso.getPc6()) * 1000) / mufiso.getVolumen();
 				
 				
-				sofijo=((mufiso.getMuestraa()-mufiso.getMuestrab())*1000)/mufiso.getVolumen();
-				sototal=((mufiso.getMuestrac()-mufiso.getMuestrad())*1000)/mufiso.getVolumen();
-				sovolatil=((mufiso.getMuestraf()-mufiso.getMuestrae())*1000)/mufiso.getVolumen();
+
+				mufiso.setOpsolidostotal1(sototal1);
+				mufiso.setOpsolidosfijo1(sofijo1);
+				mufiso.setOpsolidosvolatil1(sovolatil1);
+
+				mufiso.setOpsolidostotal2(sototal2);
+				mufiso.setOpsolidosfijo2(sofijo2);
+				mufiso.setOpsolidosvolatil2(sovolatil2);
+
+				mufiso.setOpsolidostotal3(sototal3);
+				mufiso.setOpsolidosfijo3(sofijo3);
+				mufiso.setOpsolidosvolatil3(sovolatil3);
+
+				mufiso.setOpsolidostotal4(sototal4);
+				mufiso.setOpsolidosfijo4(sofijo4);
+				mufiso.setOpsolidosvolatil4(sovolatil4);
+
+				mufiso.setOpsolidostotal5(sototal5);
+				mufiso.setOpsolidosfijo5(sofijo5);
+				mufiso.setOpsolidosvolatil5(sovolatil5);
+
+				mufiso.setOpsolidostotal6(sototal6);
+				mufiso.setOpsolidosfijo6(sofijo6);
+				mufiso.setOpsolidosvolatil6(sovolatil6);
 				
-				mufiso.setOpsolidostotal(sototal);
-				mufiso.setOpsolidosfijo(sofijo);
-				mufiso.setOpsolidosvolatil(sovolatil);
+				promediofijo=(mufiso.getOpsolidosfijo1()+mufiso.getOpsolidosfijo2()+mufiso.getOpsolidosfijo3()+mufiso.getOpsolidosfijo4()+mufiso.getOpsolidosfijo5()+mufiso.getOpsolidosfijo6())/6;
+				promediototal=(mufiso.getOpsolidostotal1()+mufiso.getOpsolidostotal2()+mufiso.getOpsolidostotal3()+mufiso.getOpsolidostotal4()+mufiso.getOpsolidostotal5()+mufiso.getOpsolidostotal6())/6;
+				promediovolatil=(mufiso.getOpsolidosvolatil1()+mufiso.getOpsolidosvolatil2()+mufiso.getOpsolidosvolatil3()+mufiso.getOpsolidosvolatil4()+mufiso.getOpsolidosvolatil5()+mufiso.getOpsolidosvolatil6())/6;
 				
+				mufiso.setPromedioFi(promediofijo);
+				mufiso.setPromedioTo(promediototal);
+				mufiso.setPromedioVo(promediovolatil);
+
 				servicemuestrafisoquimico.modificar(mufiso);
-				
+
 			}
+			
+			
 
 		} catch (Exception e) {
 			// TODO: handle exception
