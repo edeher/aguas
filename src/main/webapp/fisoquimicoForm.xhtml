@@ -51,11 +51,11 @@
 
 							<p:outputLabel value="Peso Inicial" style="font-weight:bold;" />
 							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.pc1}"
-								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s" decimalPlaces="4"/>
-								<p:outputLabel value="Peso de Crisol" style="font-weight:bold;"  />
-							<p:inputNumber
 								value="#{fisoQuimicoFormBean.muestrafisoquimico.pi1}"
+								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s" decimalPlaces="4"/>
+							<p:outputLabel value="Peso de Crisol" style="font-weight:bold;"  />
+							<p:inputNumber
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.pc1}"
 								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s" decimalPlaces="4"/>
 
 							<p:outputLabel value="op solidos Totales" style="font-weight:bold;"/>
@@ -89,11 +89,11 @@
 
 							<p:outputLabel value="Peso Inicial" style="font-weight:bold;" />
 							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.pc2}"
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.pi2}"
 								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s" decimalPlaces="4"/>
 								<p:outputLabel value="Peso de Crisol" style="font-weight:bold;" />
 							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.pi2}"
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.pc2}"
 								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s" decimalPlaces="4"/>
 
 							<p:outputLabel value="op solidos Totales" style="font-weight:bold;"/>
@@ -124,11 +124,11 @@
 
 							<p:outputLabel value="Peso Inicial" style="font-weight:bold;" />
 							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.pc3}"
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.pi3}"
 								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s" decimalPlaces="4"/>
 								<p:outputLabel value="Peso de Crisol" style="font-weight:bold;" />
 							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.pi3}"
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.pc3}"
 								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s" decimalPlaces="4"/>
 
 							<p:outputLabel value="op solidos Totales" style="font-weight:bold;"/>
@@ -159,11 +159,11 @@
 
 							<p:outputLabel value="Peso Inicial" style="font-weight:bold;" />
 							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.pc4}"
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.pi4}"
 								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s" decimalPlaces="4"/>
 								<p:outputLabel value="Peso de Crisol" style="font-weight:bold;" />
 							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.pi4}"
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.pc4}"
 								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s" decimalPlaces="4"/>
 
 							<p:outputLabel value="op solidos Totales" style="font-weight:bold;"/>
@@ -194,11 +194,11 @@
 
 							<p:outputLabel value="Peso Inicial" style="font-weight:bold;" />
 							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.pc5}"
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.pi5}"
 								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s" decimalPlaces="4"/>
 								<p:outputLabel value="Peso de Crisol" style="font-weight:bold;" />
 							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.pi5}"
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.pc5}"
 								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s" decimalPlaces="4"/>
 
 							<p:outputLabel value="op solidos Totales" style="font-weight:bold;"/>
@@ -229,11 +229,11 @@
 
 							<p:outputLabel value="Peso Inicial" style="font-weight:bold;" />
 							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.pc6}"
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.pi6}"
 								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s" decimalPlaces="4"/>
 								<p:outputLabel value="Peso de Crisol" style="font-weight:bold;" />
 							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.pi6}"
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.pc6}"
 								decimalSeparator="." thousandSeparator="," symbol="mg" symbolPosition="s" decimalPlaces="4"/>
 
 							<p:outputLabel value="op solidos Totales" style="font-weight:bold;"/>
@@ -289,9 +289,23 @@
 								maxIntegerDigits="10" type="currency" locale="true" />
 						</p:outputLabel>
 					</p:column>
+					<p:column headerText="des. estand. solidos totales" filterBy="#{mufi.dessoltotal}"
+						filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{mufi.dessoltotal} mg/L" style="font-weight:bold;">
+							<f:convertNumber currencySymbol="" maxFractionDigits="4"
+								maxIntegerDigits="10" type="currency" locale="true" />
+						</p:outputLabel>
+					</p:column>
 					<p:column headerText="Promedio de solidos Fijos" filterBy="#{mufi.promedioFi}"
 						filterMatchMode="contains" filterStyle="display:none">
 						<p:outputLabel value="#{mufi.promedioFi} mg/L" style="font-weight:bold;">
+							<f:convertNumber currencySymbol="" maxFractionDigits="4"
+								maxIntegerDigits="10" type="currency" locale="true" />
+						</p:outputLabel>
+					</p:column>
+					<p:column headerText="des.estand. solidos fijos" filterBy="#{mufi.dessolfi}"
+						filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{mufi.dessolfi} mg/L" style="font-weight:bold;">
 							<f:convertNumber currencySymbol="" maxFractionDigits="4"
 								maxIntegerDigits="10" type="currency" locale="true" />
 						</p:outputLabel>
@@ -303,7 +317,13 @@
 								maxIntegerDigits="10" type="currency" locale="true" />
 						</p:outputLabel>
 					</p:column>
-
+					<p:column headerText="des. estand. solidos volatiles" filterBy="#{mufi.dessolvol}"
+						filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{mufi.dessolvol} mg/L" style="font-weight:bold;">
+							<f:convertNumber currencySymbol="" maxFractionDigits="4"
+								maxIntegerDigits="10" type="currency" locale="true" />
+						</p:outputLabel>
+					</p:column>
 
 
 					<p:column style="width:30px">

@@ -179,7 +179,7 @@ public class FisoQuimicoFormBean implements Serializable {
 			FisoQuimico fiso3 = this.fisoquimico;
 			this.lstMuestraFisoQuimico = servicemuestrafisoquimico.listarPorFisoQuimico(fiso3);
 			double sototal1 = 0, sofijo1 = 0, sovolatil1 = 0, sototal2 = 0, sofijo2 = 0, sovolatil2 = 0, sototal3 = 0,
-					sofijo3 = 0, sovolatil3 = 0, sototal4 = 0, sofijo4 = 0, sovolatil4 = 0, sototal5 = 0, sofijo5 = 0,
+					sofijo3 = 0, sovolatil3 = 0, sototal4 = 0, sofijo4 = 0, sovolatil4 = 0, sototal5 = 0, sofijo5 = 0,destotal=0,desfijo=0,desvol=0,
 					sovolatil5 = 0, sototal6 = 0, sofijo6 = 0, sovolatil6 = 0, promediototal=0,promediofijo=0, promediovolatil=0;
 			for (MuestraFisoQuimico mufiso : this.lstMuestraFisoQuimico) {
 
@@ -237,10 +237,21 @@ public class FisoQuimicoFormBean implements Serializable {
 				promediototal=(mufiso.getOpsolidostotal1()+mufiso.getOpsolidostotal2()+mufiso.getOpsolidostotal3()+mufiso.getOpsolidostotal4()+mufiso.getOpsolidostotal5()+mufiso.getOpsolidostotal6())/6;
 				promediovolatil=(mufiso.getOpsolidosvolatil1()+mufiso.getOpsolidosvolatil2()+mufiso.getOpsolidosvolatil3()+mufiso.getOpsolidosvolatil4()+mufiso.getOpsolidosvolatil5()+mufiso.getOpsolidosvolatil6())/6;
 				
+				destotal= Math.sqrt((Math.pow((mufiso.getOpsolidostotal1()-promediototal),2)+Math.pow((mufiso.getOpsolidostotal2()-promediototal),2)+Math.pow((mufiso.getOpsolidostotal3()-promediototal),2)+Math.pow((mufiso.getOpsolidostotal4()-promediototal),2)+Math.pow((mufiso.getOpsolidostotal5()-promediototal),2)+Math.pow((mufiso.getOpsolidostotal6()-promediototal),2))/6);
+				desfijo= Math.sqrt((Math.pow((mufiso.getOpsolidosfijo1()-promediototal),2)+Math.pow((mufiso.getOpsolidosfijo2()-promediototal),2)+Math.pow((mufiso.getOpsolidosfijo3()-promediototal),2)+Math.pow((mufiso.getOpsolidosfijo4()-promediototal),2)+Math.pow((mufiso.getOpsolidosfijo5()-promediototal),2)+Math.pow((mufiso.getOpsolidosfijo6()-promediototal),2))/6);
+				desvol= Math.sqrt((Math.pow((mufiso.getOpsolidosvolatil1()-promediototal),2)+Math.pow((mufiso.getOpsolidosvolatil2()-promediototal),2)+Math.pow((mufiso.getOpsolidosvolatil3()-promediototal),2)+Math.pow((mufiso.getOpsolidosvolatil4()-promediototal),2)+Math.pow((mufiso.getOpsolidosvolatil5()-promediototal),2)+Math.pow((mufiso.getOpsolidosvolatil6()-promediototal),2))/6);
+				
+				
+				
+				
 				mufiso.setPromedioFi(promediofijo);
+				mufiso.setDessoltotal(destotal);
 				mufiso.setPromedioTo(promediototal);
+				mufiso.setDessolfi(desfijo);
 				mufiso.setPromedioVo(promediovolatil);
-
+				mufiso.setDessolvol(desvol);
+				
+								
 				servicemuestrafisoquimico.modificar(mufiso);
 
 			}

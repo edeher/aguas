@@ -149,15 +149,24 @@ public class MuestraFisoQuimico implements Serializable{
 	@Column(name="temperatura", columnDefinition="Decimal(10,4)", nullable=false)
 	private double temperatura;
 	
+	
 	@Column(name="promedioTo", columnDefinition="Decimal(10,4)", nullable=false)
 	private double promedioTo;
+	
+	@Column(name="dessoltotal", columnDefinition="Decimal(10,4)", nullable=false)
+	private double dessoltotal;
 	
 	@Column(name="promedioFi", columnDefinition="Decimal(10,4)", nullable=false)
 	private double promedioFi;
 	
+	@Column(name="dessolfi", columnDefinition="Decimal(10,4)", nullable=false)
+	private double dessolfi;
+	
 	@Column(name="promedioVo", columnDefinition="Decimal(10,4)", nullable=false)
 	private double promedioVo;
-
+	
+	@Column(name="dessolvol", columnDefinition="Decimal(10,4)", nullable=false)
+	private double dessolvol;
 
 	public double getPf1() {
 		return pf1;
@@ -519,6 +528,31 @@ public class MuestraFisoQuimico implements Serializable{
 
 	public void setPromedioVo(double promedioVo) {
 		this.promedioVo = promedioVo;
+	}
+	
+	
+	public double getDessoltotal() {
+		return dessoltotal;
+	}
+
+	public void setDessoltotal(double dessoltotal) {
+		this.dessoltotal = dessoltotal;
+	}
+
+	public double getDessolfi() {
+		return dessolfi;
+	}
+
+	public void setDessolfi(double dessolfi) {
+		this.dessolfi = dessolfi;
+	}
+
+	public double getDessolvol() {
+		return dessolvol;
+	}
+
+	public void setDessolvol(double dessolvol) {
+		this.dessolvol = dessolvol;
 	}
 
 	@Override
