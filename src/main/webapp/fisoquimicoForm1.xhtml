@@ -8,13 +8,9 @@
 <h:head></h:head>
 <body>
 	<ui:composition template="/WEB-INF/templates/plantilla.xhtml">
-		<ui:define name="content">
-			<p:messages id="msj" autoUpdate="true" showDetail="true"
-				globalOnly="true" closable="true" />
 
+		<ui:define name="content">
 			<h:form id="frm">
-			
-			
 				<p:fieldset id="pgMuestra" legend="#{fisoQuimicoFormBean.titulo}"
 					toggleable="true">
 					<p:panelGrid columns="7">
@@ -321,9 +317,7 @@
 							actionListener="#{fisoQuimicoFormBean.limpiarControles()}" />
 
 					</p:panelGrid>
-
 				</p:fieldset>
-
 				<p:dataTable id="dtMuestra"
 					value="#{fisoQuimicoFormBean.lstMuestraFisoQuimico }" var="mufi">
 
@@ -333,7 +327,7 @@
 						<p:outputLabel value="#{mufi.nromuestra }"
 							style="font-weight:bold;" />
 					</p:column>
-
+					
 					<p:column headerText="Promedio de solidos totales"
 						filterBy="#{mufi.promedioTo}" filterMatchMode="contains"
 						filterStyle="display:none">
@@ -388,8 +382,6 @@
 								maxIntegerDigits="10" type="currency" locale="true" />
 						</p:outputLabel>
 					</p:column>
-
-
 					<p:column style="width:30px">
 						<p:commandLink
 							actionListener="#{fisoQuimicoFormBean.seleccionar(mufi)}"
@@ -399,24 +391,29 @@
 						</p:commandLink>
 
 					</p:column>
+					
 					<p:column style="width:30px">
-						<p:commandLink oncomplete="PF('wdlghisto').show();">
+						<p:commandLink
+							
+							oncomplete="PF('wdlghisto').show();" update="frm:dlghisto">
 							<p:graphicImage library="images" name="his.jpg" />
+
 						</p:commandLink>
 
 					</p:column>
+				</p:dataTable>
+				<p:dialog id="dlghisto" widgetVar="wdlghisto" showEffect="explode" hideEffect="bounce" height="100"
+					modal="true">
 
 
-				</p:dataTable >
-				<p:dialog id="dlghisto"  widgetVar="wdlghisto"  modal="true">
-				
-				
 				</p:dialog>
-				
+
 
 			</h:form>
 
 		</ui:define>
+
+
 	</ui:composition>
 
 </body>
