@@ -394,7 +394,7 @@
 					
 					<p:column style="width:30px">
 						<p:commandLink
-							
+						actionListener="#{graficoBean.listar(mufi)}"
 							oncomplete="PF('wdlghisto').show();" update="frm:dlghisto">
 							<p:graphicImage library="images" name="his.jpg" />
 
@@ -402,9 +402,9 @@
 
 					</p:column>
 				</p:dataTable>
-				<p:dialog id="dlghisto" widgetVar="wdlghisto" showEffect="explode" hideEffect="bounce" height="100"
+				<p:dialog id="dlghisto" widgetVar="wdlghisto" showEffect="explode" hideEffect="explode" 
 					modal="true">
-
+					<p:chart type="line" model="#{graficoBean.lineModel}" style="width:1000px;height:800px" rendered="#{graficoBean.lineModel !=null}"/>
 
 				</p:dialog>
 
