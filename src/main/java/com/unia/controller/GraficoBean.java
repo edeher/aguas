@@ -43,6 +43,7 @@ public class GraficoBean implements Serializable {
 			
 		lineModel=lineas();
 		lineModel.setTitle("Desviacion Standar");
+		lineModel.setAnimate(true);
 		lineModel.setLegendPosition("e");
 
 		Axis yAxis = lineModel.getAxis(AxisType.Y);
