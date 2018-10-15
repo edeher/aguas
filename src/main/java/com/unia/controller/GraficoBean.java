@@ -1,7 +1,10 @@
 package com.unia.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -24,6 +27,15 @@ public class GraficoBean implements Serializable {
 	private IMuestraFisoQuimicoService servicemuestrafisoquimico;
 
 	private LineChartModel lineModel;
+	
+	@PostConstruct
+	public void init() {
+		MuestraFisoQuimico fisoquimico= new MuestraFisoQuimico();
+		this.listar(fisoquimico);
+		
+	}
+	
+	
 
 	public void listar(MuestraFisoQuimico t) {
 		try {
@@ -37,34 +49,77 @@ public class GraficoBean implements Serializable {
 		}
 
 	}
-
-	private void graficar(MuestraFisoQuimico t) {
-
+      
+	
+	private void graficar(MuestraFisoQuimico t1) {
+		
 			
-		lineModel=lineas();
-		lineModel.setTitle("Desviacion Standar");
+		lineModel=lineas(t1);
+		lineModel.setTitle("Desviacion Estandar");
 		lineModel.setAnimate(true);
 		lineModel.setLegendPosition("e");
 
-		Axis yAxis = lineModel.getAxis(AxisType.Y);
-		yAxis.setMin(1);
-		yAxis.setMax(10);
+		Axis yAxis1 = lineModel.getAxis(AxisType.Y);
+		yAxis1.setMin((t1.getPromedioTo()-t1.getDessoltotal())-1000);
+		yAxis1.setMax((t1.getPromedioTo()+t1.getDessoltotal())+1000);
+		
+		
+		
 	
 	}
-	private LineChartModel lineas() {
+	private LineChartModel lineas(MuestraFisoQuimico t2) {
+		
+			
+		
 		LineChartModel model=new LineChartModel();
 		
-		
+			
 		 LineChartSeries series1 = new LineChartSeries();
-	        series1.setLabel("Series 1");
+	        series1.setLabel("Solidos");
 	 
-	        series1.set(1, 2);
-	        series1.set(2, 1);
-	        series1.set(3, 3);
-	        series1.set(4, 6);
-	        series1.set(5, 8);
+	        series1.set(1, t2.getOpsolidostotal1());
+	        series1.set(2, t2.getOpsolidostotal2());
+	        series1.set(3, t2.getOpsolidostotal3());
+	        series1.set(4, t2.getOpsolidostotal4());
+	        series1.set(5, t2.getOpsolidostotal5());
+	        series1.set(6, t2.getOpsolidostotal6());
+		
+		 LineChartSeries series2 = new LineChartSeries();
+	        series2.setLabel("Limite Maximo Desviacion");
+	 
+	        series2.set(1,((t2.getPromedioTo()+t2.getDessoltotal())));
+	        series2.set(2, ((t2.getPromedioTo()+t2.getDessoltotal())));
+	        series2.set(3, ((t2.getPromedioTo()+t2.getDessoltotal())));
+	        series2.set(4, ((t2.getPromedioTo()+t2.getDessoltotal())));
+	        series2.set(5, ((t2.getPromedioTo()+t2.getDessoltotal())));
+	        series2.set(6, ((t2.getPromedioTo()+t2.getDessoltotal())));
+	        
+	        
+	        LineChartSeries series3 = new LineChartSeries();
+	        series3.setLabel("Promedio");
+	 
+	        series3.set(1, t2.getPromedioTo());
+	        series3.set(2, t2.getPromedioTo());
+	        series3.set(3, t2.getPromedioTo());
+	        series3.set(4, t2.getPromedioTo());
+	        series3.set(5,t2.getPromedioTo());
+	        series3.set(6, t2.getPromedioTo());
+	        
+	        LineChartSeries series4 = new LineChartSeries();
+	        series4.setLabel("Limite Minimo Desvicion");
+	 
+	        series4.set(1, ((t2.getPromedioTo()-t2.getDessoltotal())));
+	        series4.set(2, ((t2.getPromedioTo()-t2.getDessoltotal())));
+	        series4.set(3, ((t2.getPromedioTo()-t2.getDessoltotal())));
+	        series4.set(4, ((t2.getPromedioTo()-t2.getDessoltotal())));
+	        series4.set(5, ((t2.getPromedioTo()-t2.getDessoltotal())));
+	        series4.set(6, ((t2.getPromedioTo()-t2.getDessoltotal())));
+	        	        
 		
 	        model.addSeries(series1);
+	        model.addSeries(series2);
+	        model.addSeries(series3);
+	        model.addSeries(series4);
 	        
 	        return model;
 	        
@@ -85,5 +140,9 @@ public class GraficoBean implements Serializable {
 	public void setLineModel(LineChartModel lineModel) {
 		this.lineModel = lineModel;
 	}
+
+	
+
+	
 
 }
