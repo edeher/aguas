@@ -106,7 +106,12 @@ public class FisoQuimicoFormBean implements Serializable {
 
 		this.muestrafisoquimico.setPh((short) 0);
 		this.muestrafisoquimico.setTemperatura((short) 0);
-		this.muestrafisoquimico.setVolumen((short) 0);
+		this.muestrafisoquimico.setVolumen1((short) 0);
+		this.muestrafisoquimico.setVolumen2((short) 0);
+		this.muestrafisoquimico.setVolumen3((short) 0);
+		this.muestrafisoquimico.setVolumen4((short) 0);
+		this.muestrafisoquimico.setVolumen5((short) 0);
+		this.muestrafisoquimico.setVolumen6((short) 0);
 	}
 
 	public void leer(FisoQuimico t) {
@@ -183,29 +188,29 @@ public class FisoQuimicoFormBean implements Serializable {
 					sovolatil5 = 0, sototal6 = 0, sofijo6 = 0, sovolatil6 = 0, promediototal=0,promediofijo=0, promediovolatil=0;
 			for (MuestraFisoQuimico mufiso : this.lstMuestraFisoQuimico) {
 
-				sofijo1 = ((mufiso.getPi1() - mufiso.getPf1()) * 1000) / mufiso.getVolumen();
-				sototal1 = ((mufiso.getPf1() - mufiso.getPc1()) * 1000) / mufiso.getVolumen();
-				sovolatil1 = ((mufiso.getPf1() - mufiso.getPc1()) * 1000) / mufiso.getVolumen();
+				sofijo1 = ((mufiso.getPi1() - mufiso.getPf1()) * 1000) / mufiso.getVolumen1();
+				sototal1 = ((mufiso.getPi1() - mufiso.getPc1()) * 1000) / mufiso.getVolumen1();
+				sovolatil1 = ((mufiso.getPf1() - mufiso.getPc1()) * 1000) / mufiso.getVolumen1();
 				
-				sofijo2 = ((mufiso.getPi2() - mufiso.getPf2()) * 1000) / mufiso.getVolumen();
-				sototal2 = ((mufiso.getPf2() - mufiso.getPc2()) * 1000) / mufiso.getVolumen();
-				sovolatil2 = ((mufiso.getPf2() - mufiso.getPc2()) * 1000) / mufiso.getVolumen();
+				sofijo2 = ((mufiso.getPi2() - mufiso.getPf2()) * 1000) / mufiso.getVolumen2();
+				sototal2 = ((mufiso.getPi2() - mufiso.getPc2()) * 1000) / mufiso.getVolumen2();
+				sovolatil2 = ((mufiso.getPf2() - mufiso.getPc2()) * 1000) / mufiso.getVolumen2();
 				
-				sofijo3 = ((mufiso.getPi3() - mufiso.getPf3()) * 1000) / mufiso.getVolumen();
-				sototal3 = ((mufiso.getPf3() - mufiso.getPc3()) * 1000) / mufiso.getVolumen();
-				sovolatil3 = ((mufiso.getPf3() - mufiso.getPc3()) * 1000) / mufiso.getVolumen();
+				sofijo3 = ((mufiso.getPi3() - mufiso.getPf3()) * 1000) / mufiso.getVolumen3();
+				sototal3 = ((mufiso.getPi3() - mufiso.getPc3()) * 1000) / mufiso.getVolumen3();
+				sovolatil3 = ((mufiso.getPf3() - mufiso.getPc3()) * 1000) / mufiso.getVolumen3();
 				
-				sofijo4 = ((mufiso.getPi4() - mufiso.getPf4()) * 1000) / mufiso.getVolumen();
-				sototal4 = ((mufiso.getPf4() - mufiso.getPc4()) * 1000) / mufiso.getVolumen();
-				sovolatil4 = ((mufiso.getPf4() - mufiso.getPc4()) * 1000) / mufiso.getVolumen();
+				sofijo4 = ((mufiso.getPi4() - mufiso.getPf4()) * 1000) / mufiso.getVolumen4();
+				sototal4 = ((mufiso.getPi4() - mufiso.getPc4()) * 1000) / mufiso.getVolumen4();
+				sovolatil4 = ((mufiso.getPf4() - mufiso.getPc4()) * 1000) / mufiso.getVolumen4();
 				
-				sofijo5 = ((mufiso.getPi5() - mufiso.getPf5()) * 1000) / mufiso.getVolumen();
-				sototal5 = ((mufiso.getPf5() - mufiso.getPc5()) * 1000) / mufiso.getVolumen();
-				sovolatil5 = ((mufiso.getPf5() - mufiso.getPc5()) * 1000) / mufiso.getVolumen();
+				sofijo5 = ((mufiso.getPi5() - mufiso.getPf5()) * 1000) / mufiso.getVolumen5();
+				sototal5 = ((mufiso.getPi5() - mufiso.getPc5()) * 1000) / mufiso.getVolumen5();
+				sovolatil5 = ((mufiso.getPf5() - mufiso.getPc5()) * 1000) / mufiso.getVolumen5();
 				
-				sofijo6 = ((mufiso.getPi6() - mufiso.getPf6()) * 1000) / mufiso.getVolumen();
-				sototal6 = ((mufiso.getPf6() - mufiso.getPc6()) * 1000) / mufiso.getVolumen();
-				sovolatil6 = ((mufiso.getPf6() - mufiso.getPc6()) * 1000) / mufiso.getVolumen();
+				sofijo6 = ((mufiso.getPi6() - mufiso.getPf6()) * 1000) / mufiso.getVolumen6();
+				sototal6 = ((mufiso.getPi6() - mufiso.getPc6()) * 1000) / mufiso.getVolumen6();
+				sovolatil6 = ((mufiso.getPf6() - mufiso.getPc6()) * 1000) / mufiso.getVolumen6();
 				
 				
 
@@ -238,17 +243,17 @@ public class FisoQuimicoFormBean implements Serializable {
 				promediovolatil=(mufiso.getOpsolidosvolatil1()+mufiso.getOpsolidosvolatil2()+mufiso.getOpsolidosvolatil3()+mufiso.getOpsolidosvolatil4()+mufiso.getOpsolidosvolatil5()+mufiso.getOpsolidosvolatil6())/6;
 				
 				destotal= Math.sqrt((Math.pow((mufiso.getOpsolidostotal1()-promediototal),2)+Math.pow((mufiso.getOpsolidostotal2()-promediototal),2)+Math.pow((mufiso.getOpsolidostotal3()-promediototal),2)+Math.pow((mufiso.getOpsolidostotal4()-promediototal),2)+Math.pow((mufiso.getOpsolidostotal5()-promediototal),2)+Math.pow((mufiso.getOpsolidostotal6()-promediototal),2))/6);
-				desfijo= Math.sqrt((Math.pow((mufiso.getOpsolidosfijo1()-promediototal),2)+Math.pow((mufiso.getOpsolidosfijo2()-promediototal),2)+Math.pow((mufiso.getOpsolidosfijo3()-promediototal),2)+Math.pow((mufiso.getOpsolidosfijo4()-promediototal),2)+Math.pow((mufiso.getOpsolidosfijo5()-promediototal),2)+Math.pow((mufiso.getOpsolidosfijo6()-promediototal),2))/6);
-				desvol= Math.sqrt((Math.pow((mufiso.getOpsolidosvolatil1()-promediototal),2)+Math.pow((mufiso.getOpsolidosvolatil2()-promediototal),2)+Math.pow((mufiso.getOpsolidosvolatil3()-promediototal),2)+Math.pow((mufiso.getOpsolidosvolatil4()-promediototal),2)+Math.pow((mufiso.getOpsolidosvolatil5()-promediototal),2)+Math.pow((mufiso.getOpsolidosvolatil6()-promediototal),2))/6);
+				desfijo= Math.sqrt((Math.pow((mufiso.getOpsolidosfijo1()-promediofijo),2)+Math.pow((mufiso.getOpsolidosfijo2()-promediofijo),2)+Math.pow((mufiso.getOpsolidosfijo3()-promediofijo),2)+Math.pow((mufiso.getOpsolidosfijo4()-promediofijo),2)+Math.pow((mufiso.getOpsolidosfijo5()-promediofijo),2)+Math.pow((mufiso.getOpsolidosfijo6()-promediofijo),2))/6);
+				desvol= Math.sqrt((Math.pow((mufiso.getOpsolidosvolatil1()-promediovolatil),2)+Math.pow((mufiso.getOpsolidosvolatil2()-promediovolatil),2)+Math.pow((mufiso.getOpsolidosvolatil3()-promediovolatil),2)+Math.pow((mufiso.getOpsolidosvolatil4()-promediovolatil),2)+Math.pow((mufiso.getOpsolidosvolatil5()-promediovolatil),2)+Math.pow((mufiso.getOpsolidosvolatil6()-promediovolatil),2))/6);
 				
 				
 				
 				
 				mufiso.setPromedioFi(promediofijo);
-				mufiso.setDessoltotal(destotal);
 				mufiso.setPromedioTo(promediototal);
-				mufiso.setDessolfi(desfijo);
 				mufiso.setPromedioVo(promediovolatil);
+				mufiso.setDessoltotal(destotal);
+				mufiso.setDessolfi(desfijo);
 				mufiso.setDessolvol(desvol);
 				
 								

@@ -143,8 +143,23 @@ public class MuestraFisoQuimico implements Serializable{
 	@Column(name="opsolidosvolatil6", columnDefinition="Decimal(10,4)", nullable=false)
 	private double opsolidosvolatil6;
 	
-	@Column(name="volumen", columnDefinition="Decimal(10,4)", nullable=false)
-	private double volumen;
+	@Column(name="volumen1", columnDefinition="Decimal(10,4)", nullable=false)
+	private double volumen1;
+	
+	@Column(name="volumen2", columnDefinition="Decimal(10,4)", nullable=false)
+	private double volumen2;
+	
+	@Column(name="volumen3", columnDefinition="Decimal(10,4)", nullable=false)
+	private double volumen3;
+	
+	@Column(name="volumen4", columnDefinition="Decimal(10,4)", nullable=false)
+	private double volumen4;
+	
+	@Column(name="volumen5", columnDefinition="Decimal(10,4)", nullable=false)
+	private double volumen5;
+	
+	@Column(name="volumen6", columnDefinition="Decimal(10,4)", nullable=false)
+	private double volumen6;
 	
 	@Column(name="temperatura", columnDefinition="Decimal(10,4)", nullable=false)
 	private double temperatura;
@@ -480,12 +495,54 @@ public class MuestraFisoQuimico implements Serializable{
 		this.ph = ph;
 	}
 
-	public double getVolumen() {
-		return volumen;
+	
+
+	public double getVolumen1() {
+		return volumen1;
 	}
 
-	public void setVolumen(double volumen) {
-		this.volumen = volumen;
+	public void setVolumen1(double volumen1) {
+		this.volumen1 = volumen1;
+	}
+
+	public double getVolumen2() {
+		return volumen2;
+	}
+
+	public void setVolumen2(double volumen2) {
+		this.volumen2 = volumen2;
+	}
+
+	public double getVolumen3() {
+		return volumen3;
+	}
+
+	public void setVolumen3(double volumen3) {
+		this.volumen3 = volumen3;
+	}
+
+	public double getVolumen4() {
+		return volumen4;
+	}
+
+	public void setVolumen4(double volumen4) {
+		this.volumen4 = volumen4;
+	}
+
+	public double getVolumen5() {
+		return volumen5;
+	}
+
+	public void setVolumen5(double volumen5) {
+		this.volumen5 = volumen5;
+	}
+
+	public double getVolumen6() {
+		return volumen6;
+	}
+
+	public void setVolumen6(double volumen6) {
+		this.volumen6 = volumen6;
 	}
 
 	public double getTemperatura() {

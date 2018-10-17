@@ -33,16 +33,17 @@
 								decimalSeparator="." thousandSeparator="," symbol="°C"
 								symbolPosition="s" />
 
-							<p:outputLabel value="volumen" style="font-weight:bold;" />
-							<p:inputNumber
-								value="#{fisoQuimicoFormBean.muestrafisoquimico.volumen}"
-								decimalSeparator="." thousandSeparator="," symbol="ml"
-								symbolPosition="s" decimalPlaces="4" />
+							
 						</p:panelGrid>
 
 
 						<p:panelGrid columns="2">
-
+							
+							<p:outputLabel value="volumen" style="font-weight:bold;" />
+							<p:inputNumber
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.volumen1}"
+								decimalSeparator="." thousandSeparator="," symbol="ml"
+								symbolPosition="s" decimalPlaces="4" />
 
 							<p:outputLabel value="Peso Final" style="font-weight:bold;" />
 							<p:inputNumber
@@ -89,6 +90,12 @@
 							</p:outputLabel>
 						</p:panelGrid>
 						<p:panelGrid columns="2">
+						
+							<p:outputLabel value="volumen" style="font-weight:bold;" />
+							<p:inputNumber
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.volumen2}"
+								decimalSeparator="." thousandSeparator="," symbol="ml"
+								symbolPosition="s" decimalPlaces="4" />
 
 							<p:outputLabel value="Peso Final" style="font-weight:bold;" />
 							<p:inputNumber
@@ -132,6 +139,12 @@
 							</p:outputLabel>
 						</p:panelGrid>
 						<p:panelGrid columns="2">
+							
+							<p:outputLabel value="volumen" style="font-weight:bold;" />
+							<p:inputNumber
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.volumen3}"
+								decimalSeparator="." thousandSeparator="," symbol="ml"
+								symbolPosition="s" decimalPlaces="4" />
 
 							<p:outputLabel value="Peso Final" style="font-weight:bold;" />
 							<p:inputNumber
@@ -175,6 +188,12 @@
 							</p:outputLabel>
 						</p:panelGrid>
 						<p:panelGrid columns="2">
+						
+							<p:outputLabel value="volumen" style="font-weight:bold;" />
+							<p:inputNumber
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.volumen4}"
+								decimalSeparator="." thousandSeparator="," symbol="ml"
+								symbolPosition="s" decimalPlaces="4" />
 
 							<p:outputLabel value="Peso Final" style="font-weight:bold;" />
 							<p:inputNumber
@@ -218,6 +237,12 @@
 							</p:outputLabel>
 						</p:panelGrid>
 						<p:panelGrid columns="2">
+						
+							<p:outputLabel value="volumen" style="font-weight:bold;" />
+							<p:inputNumber
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.volumen5}"
+								decimalSeparator="." thousandSeparator="," symbol="ml"
+								symbolPosition="s" decimalPlaces="4" />
 
 							<p:outputLabel value="Peso Final" style="font-weight:bold;" />
 							<p:inputNumber
@@ -261,6 +286,12 @@
 							</p:outputLabel>
 						</p:panelGrid>
 						<p:panelGrid columns="2">
+						
+							<p:outputLabel value="volumen" style="font-weight:bold;" />
+							<p:inputNumber
+								value="#{fisoQuimicoFormBean.muestrafisoquimico.volumen6}"
+								decimalSeparator="." thousandSeparator="," symbol="ml"
+								symbolPosition="s" decimalPlaces="4" />
 
 							<p:outputLabel value="Peso Final" style="font-weight:bold;" />
 							<p:inputNumber
@@ -383,28 +414,65 @@
 						</p:outputLabel>
 					</p:column>
 					<p:column style="width:30px">
-						<p:commandLink
+						<p:commandLink id="linkMod"
 							actionListener="#{fisoQuimicoFormBean.seleccionar(mufi)}"
 							update="frm:pgMuestra" process="@this">
 							<p:graphicImage library="images" name="edit.jpg" />
 
 						</p:commandLink>
+						<p:tooltip id="toolTipGrow" for="linkMod" value="Modificar"
+               showEffect="clip" hideEffect="explode" position="left"/>
 
 					</p:column>
 					
 					<p:column style="width:30px">
-						<p:commandLink
+						<p:commandLink id="link1"
 						actionListener="#{graficoBean.listar(mufi)}"
-							oncomplete="PF('wdlghisto').show();" update="frm:dlghisto">
-							<p:graphicImage library="images" name="his.jpg" />
+							oncomplete="PF('wdlghisto1').show();" update="frm:dlghisto1">
+							<p:graphicImage library="images" name="his1.jpg" />
 
 						</p:commandLink>
+						<p:tooltip id="toolTipGrow1" for="link1" value="Solidos Totales"
+               			showEffect="clip" hideEffect="explode" position="left"/>
 
 					</p:column>
+					<p:column style="width:30px">
+						<p:commandLink id="link2"
+						actionListener="#{graficoBean.listar(mufi)}"
+							oncomplete="PF('wdlghisto2').show();" update="frm:dlghisto2">
+							<p:graphicImage library="images" name="his2.jpg" />
+
+						</p:commandLink>
+						<p:tooltip id="toolTipGrow2" for="link2" value="Solidos Fijos"
+               			showEffect="clip" hideEffect="explode" position="left"/>
+
+					</p:column>
+					<p:column style="width:30px">
+						<p:commandLink id="link3"
+						actionListener="#{graficoBean.listar(mufi)}"
+							oncomplete="PF('wdlghisto3').show();" update="frm:dlghisto3">
+							<p:graphicImage library="images" name="his3.jpg" />
+
+						</p:commandLink>
+						<p:tooltip id="toolTipGrow3" for="link3" value="Solidos Volatiles"
+						showEffect="clip" hideEffect="explode" position="left"/>
+
+					</p:column>
+					
 				</p:dataTable>
-				<p:dialog id="dlghisto" widgetVar="wdlghisto" showEffect="explode" hideEffect="explode" 
+				<p:dialog id="dlghisto1" widgetVar="wdlghisto1" showEffect="explode" hideEffect="explode" 
 					modal="true">
-					<p:chart type="line" model="#{graficoBean.lineModel}" style="width:1500px;height:800px" rendered="#{graficoBean.lineModel !=null}"/>
+					<p:chart type="line" model="#{graficoBean.lineModel1}" style="width:1500px;height:800px" rendered="#{graficoBean.lineModel1 !=null}"/>
+
+				</p:dialog>
+				<p:dialog id="dlghisto2" widgetVar="wdlghisto2" showEffect="explode" hideEffect="explode" 
+					modal="true">
+					<p:chart type="line" model="#{graficoBean.lineModel2}" style="width:1500px;height:800px" rendered="#{graficoBean.lineModel2 !=null}"/>
+
+				</p:dialog>
+				<p:dialog id="dlghisto3" widgetVar="wdlghisto3" showEffect="explode" hideEffect="explode" 
+					modal="true">
+					<p:chart type="line" model="#{graficoBean.lineModel3}" style="width:1500px;height:800px" rendered="#{graficoBean.lineModel3 !=null}"/>
 
 				</p:dialog>
 
