@@ -1,8 +1,6 @@
 package com.unia.controller;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -11,6 +9,8 @@ import javax.inject.Named;
 
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 
@@ -29,6 +29,7 @@ public class GraficoBean implements Serializable {
 	private LineChartModel lineModel1;
 	private LineChartModel lineModel2;
 	private LineChartModel lineModel3;
+	private BarChartModel barModel;
 	
 	@PostConstruct
 	public void init() {
@@ -79,7 +80,7 @@ public class GraficoBean implements Serializable {
 		lineModel1=lineas1(t1);
 		lineModel1.setTitle("Desviacion Estandar Solidos Totales");
 		lineModel1.setAnimate(true);
-		lineModel1.setLegendPosition("e");
+		lineModel1.setLegendPosition("ne");
 
 		Axis yAxis1 = lineModel1.getAxis(AxisType.Y);
 		yAxis1.setMin((t1.getPromedioTo()-t1.getDessoltotal())-10);
@@ -90,7 +91,7 @@ public class GraficoBean implements Serializable {
 		lineModel2=lineas2(t1);
 		lineModel2.setTitle("Desviacion Estandar Solidos Fijos");
 		lineModel2.setAnimate(true);
-		lineModel2.setLegendPosition("e");
+		lineModel2.setLegendPosition("ne");
 
 		Axis yAxis2= lineModel2.getAxis(AxisType.Y);
 		yAxis2.setMin((t1.getPromedioFi()-t1.getDessolfi())-10);
@@ -101,11 +102,24 @@ public class GraficoBean implements Serializable {
 		lineModel3=lineas3(t1);
 		lineModel3.setTitle("Desviacion Estandar Solidos Volatiles");
 		lineModel3.setAnimate(true);
-		lineModel3.setLegendPosition("e");
+		lineModel3.setLegendPosition("ne");
 
 		Axis yAxis3 = lineModel3.getAxis(AxisType.Y);
 		yAxis3.setMin((t1.getPromedioVo()-t1.getDessolvol())-10);
 		yAxis3.setMax((t1.getPromedioVo()+t1.getDessolvol())+10);
+		
+		
+		
+		barModel = lineas4(t1);
+		barModel.setTitle("Porcentaje de Solidos");
+		barModel.setAnimate(true);
+        barModel.setLegendPosition("ne");
+        Axis xAxis = barModel.getAxis(AxisType.X);
+        xAxis.setLabel("Muestras");
+        Axis yAxis = barModel.getAxis(AxisType.Y);
+        yAxis.setLabel("Porcentaje");
+        yAxis.setMin(0);
+        yAxis.setMax(((t1.getPromedioVo()+t1.getDessolvol())+8)/100);
 		
 			
 	}
@@ -280,6 +294,47 @@ public class GraficoBean implements Serializable {
         return model;
         
 }
+	
+	private BarChartModel lineas4 (MuestraFisoQuimico l4) {
+		BarChartModel model = new BarChartModel();
+		
+		ChartSeries st = new ChartSeries();
+		st.setLabel("% Solidos Totales");
+		st.set(1, (l4.getOpsolidostotal1())/100);
+		st.set(2, (l4.getOpsolidostotal2())/100);
+		st.set(3, (l4.getOpsolidostotal3())/100);
+		st.set(4, (l4.getOpsolidostotal4())/100);
+		st.set(5, (l4.getOpsolidostotal5())/100);
+		st.set(6, (l4.getOpsolidostotal6())/100);
+		
+		
+		ChartSeries sf = new ChartSeries();
+		sf.setLabel("% Solidos Fijos");
+		sf.set(1, (l4.getOpsolidosfijo1())/100);
+		sf.set(2, (l4.getOpsolidosfijo2())/100);
+		sf.set(3,( l4.getOpsolidosfijo3())/100);
+		sf.set(4,( l4.getOpsolidosfijo4())/100);
+		sf.set(5, (l4.getOpsolidosfijo5())/100);
+		sf.set(6, (l4.getOpsolidosfijo6())/100);
+		
+		
+		
+		ChartSeries sv = new ChartSeries();
+		sv.setLabel("% Solidos Volatiles");
+		sv.set(1, (l4.getOpsolidosvolatil1())/100);
+		sv.set(2, (l4.getOpsolidosvolatil2())/100);
+		sv.set(3, (l4.getOpsolidosvolatil3())/100);
+		sv.set(4,( l4.getOpsolidosvolatil4())/100);
+		sv.set(5, (l4.getOpsolidosvolatil5())/100);
+		sv.set(6, (l4.getOpsolidosvolatil6())/100);
+		
+				
+		model.addSeries(st);
+		model.addSeries(sf);
+		model.addSeries(sv);
+		
+		return model;
+	}
 
 	public MuestraFisoQuimico getMuestrafisoquimico() {
 		return muestrafisoquimico;
@@ -324,6 +379,20 @@ public class GraficoBean implements Serializable {
 	public void setLineModel3(LineChartModel lineModel3) {
 		this.lineModel3 = lineModel3;
 	}
+
+
+
+	public BarChartModel getBarModel() {
+		return barModel;
+	}
+
+
+
+	public void setBarModel(BarChartModel barModel) {
+		this.barModel = barModel;
+	}
+
+
 
 	
 	

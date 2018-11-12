@@ -458,6 +458,17 @@
 						showEffect="clip" hideEffect="explode" position="left"/>
 
 					</p:column>
+					<p:column style="width:30px">
+						<p:commandLink id="link4"
+						actionListener="#{graficoBean.listar(mufi)}"
+							oncomplete="PF('wdlghisto4').show();" update="frm:dlghisto4">
+							<p:graphicImage library="images" name="his3.jpg" />
+
+						</p:commandLink>
+						<p:tooltip id="toolTipGrow4" for="link4" value="porcentaje"
+						showEffect="clip" hideEffect="explode" position="left"/>
+
+					</p:column>
 					
 				</p:dataTable>
 				<p:dialog id="dlghisto1" widgetVar="wdlghisto1" showEffect="explode" hideEffect="explode" 
@@ -473,6 +484,12 @@
 				<p:dialog id="dlghisto3" widgetVar="wdlghisto3" showEffect="explode" hideEffect="explode" 
 					modal="true">
 					<p:chart type="line" model="#{graficoBean.lineModel3}" style="width:1500px;height:800px" rendered="#{graficoBean.lineModel3 !=null}"/>
+
+				</p:dialog>
+				
+				<p:dialog id="dlghisto4" widgetVar="wdlghisto4" showEffect="explode" hideEffect="explode" 
+					modal="true">
+					<p:chart type="bar" model="#{graficoBean.barModel}" style="width:1500px;height:800px" rendered="#{graficoBean.barModel !=null}"/>
 
 				</p:dialog>
 
