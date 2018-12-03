@@ -10,9 +10,13 @@ import javax.inject.Named;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.BarChartSeries;
+import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
+import org.primefaces.model.chart.OhlcChartModel;
+import org.primefaces.model.chart.OhlcChartSeries;
 
 import com.unia.model.MuestraFisoQuimico;
 import com.unia.service.IMuestraFisoQuimicoService;
@@ -30,6 +34,7 @@ public class GraficoBean implements Serializable {
 	private LineChartModel lineModel2;
 	private LineChartModel lineModel3;
 	private BarChartModel barModel;
+	private CartesianChartModel combinedModel;
 	
 	@PostConstruct
 	public void init() {
@@ -114,12 +119,28 @@ public class GraficoBean implements Serializable {
 		barModel.setTitle("Porcentaje de Solidos");
 		barModel.setAnimate(true);
         barModel.setLegendPosition("ne");
-        Axis xAxis = barModel.getAxis(AxisType.X);
-        xAxis.setLabel("Muestras");
-        Axis yAxis = barModel.getAxis(AxisType.Y);
-        yAxis.setLabel("Porcentaje");
-        yAxis.setMin(0);
-        yAxis.setMax(((t1.getPromedioVo()+t1.getDessolvol())+8)/100);
+        Axis xAxis4 = barModel.getAxis(AxisType.X);
+        xAxis4.setLabel("Muestras");
+        Axis yAxis4 = barModel.getAxis(AxisType.Y);
+        yAxis4.setLabel("Porcentaje");
+        yAxis4.setMin(0);
+        yAxis4.setMax(((t1.getPromedioVo()+t1.getDessolvol())+8)/100);
+        
+        
+        
+        combinedModel=lineas5(t1);
+        combinedModel.setTitle("Porcentaje de Solidos");
+        combinedModel.setAnimate(true);
+        combinedModel.setLegendPosition("ne");
+        combinedModel.setMouseoverHighlight(false);
+        combinedModel.setShowDatatip(false);
+        combinedModel.setShowPointLabels(true);
+        Axis xAxis5 = combinedModel.getAxis(AxisType.X);
+        xAxis5.setLabel("Muestras");
+        Axis yAxis5 = combinedModel.getAxis(AxisType.Y);
+        yAxis5.setLabel("Porcentaje");
+        yAxis5.setMin(0);
+        yAxis5.setMax(((t1.getPromedioVo()+t1.getDessolvol())+8)/100);
 		
 			
 	}
@@ -335,6 +356,91 @@ public class GraficoBean implements Serializable {
 		
 		return model;
 	}
+	
+	 private CartesianChartModel lineas5 (MuestraFisoQuimico l5) {
+		 CartesianChartModel   model = new BarChartModel();
+		 
+		 	BarChartSeries st = new  BarChartSeries();
+			st.setLabel("% Solidos Totales");
+			st.set(1, (l5.getOpsolidostotal1())/100);
+			st.set(2, (l5.getOpsolidostotal2())/100);
+			st.set(3, (l5.getOpsolidostotal3())/100);
+			st.set(4, (l5.getOpsolidostotal4())/100);
+			st.set(5, (l5.getOpsolidostotal5())/100);
+			st.set(6, (l5.getOpsolidostotal6())/100);
+			
+			
+			BarChartSeries sf = new  BarChartSeries();
+			sf.setLabel("% Solidos Fijos");
+			sf.set(1, (l5.getOpsolidosfijo1())/100);
+			sf.set(2, (l5.getOpsolidosfijo2())/100);
+			sf.set(3,( l5.getOpsolidosfijo3())/100);
+			sf.set(4,( l5.getOpsolidosfijo4())/100);
+			sf.set(5, (l5.getOpsolidosfijo5())/100);
+			sf.set(6, (l5.getOpsolidosfijo6())/100);
+			
+			
+			
+			BarChartSeries sv = new  BarChartSeries();
+			sv.setLabel("% Solidos Volatiles");
+			sv.set(1, (l5.getOpsolidosvolatil1())/100);
+			sv.set(2, (l5.getOpsolidosvolatil2())/100);
+			sv.set(3, (l5.getOpsolidosvolatil3())/100);
+			sv.set(4,( l5.getOpsolidosvolatil4())/100);
+			sv.set(5, (l5.getOpsolidosvolatil5())/100);
+			sv.set(6, (l5.getOpsolidosvolatil6())/100);
+			
+			
+           
+			LineChartSeries dst1 = new LineChartSeries();
+			dst1.set(1,(((l5.getPromedioTo()-l5.getDessoltotal()))/100));
+			dst1.set(1,(((l5.getPromedioTo()+l5.getDessoltotal()))/100));
+//			LineChartSeries dst2 = new LineChartSeries();
+//			dst2.set(1,(((l5.getPromedioTo()-l5.getDessoltotal()))/100));
+//			dst2.set(2,(((l5.getPromedioTo()+l5.getDessoltotal()))/100));
+//			LineChartSeries dst3 = new LineChartSeries();
+//			dst3.set(1,(((l5.getPromedioTo()-l5.getDessoltotal()))/100));
+//			dst3.set(2,(((l5.getPromedioTo()+l5.getDessoltotal()))/100));
+			
+			
+			
+//			LineChartSeries dsf1 = new LineChartSeries();
+//			dsf1.set(1,(((l5.getPromedioFi()-l5.getDessolfi()))/100));
+//			dsf1.set(1,(((l5.getPromedioFi()+l5.getDessolfi()))/100));
+//			LineChartSeries dsf2= new LineChartSeries();
+//			dsf2.set(2,(((l5.getPromedioFi()-l5.getDessolfi()))/100));
+//			dsf2.set(2,(((l5.getPromedioFi()+l5.getDessolfi()))/100));
+//			LineChartSeries dsf3 = new LineChartSeries();
+//			dsf3.set(3,(((l5.getPromedioFi()-l5.getDessolfi()))/100));
+//			dsf3.set(3,(((l5.getPromedioFi()+l5.getDessolfi()))/100));
+//			
+//			
+//			
+//			LineChartSeries dsv1= new LineChartSeries();
+//			dsv1.set(1,(((l5.getPromedioVo()-l5.getDessolvol()))/100));
+//			dsv1.set(1,(((l5.getPromedioVo()+l5.getDessolvol()))/100));
+//			LineChartSeries dsv2= new LineChartSeries();
+//			dsv2.set(2,(((l5.getPromedioVo()-l5.getDessolvol()))/100));
+//			dsv2.set(2,(((l5.getPromedioVo()+l5.getDessolvol()))/100));
+//			LineChartSeries dsv3= new LineChartSeries();
+//			dsv3.set(3,(((l5.getPromedioVo()-l5.getDessolvol()))/100));
+//			dsv3.set(3,(((l5.getPromedioVo()+l5.getDessolvol()))/100));
+			
+	       
+			
+			model.addSeries(st);
+			model.addSeries(sf);
+			model.addSeries(sv);
+			
+			model.addSeries(dst1);
+			
+			
+			
+			
+	        
+	        return model;
+	        
+	 }
 
 	public MuestraFisoQuimico getMuestrafisoquimico() {
 		return muestrafisoquimico;
@@ -394,9 +500,16 @@ public class GraficoBean implements Serializable {
 
 
 
-	
-	
+	public CartesianChartModel getCombinedModel() {
+		return combinedModel;
+	}
 
-	
+
+
+	public void setCombinedModel(CartesianChartModel combinedModel) {
+		this.combinedModel = combinedModel;
+	}
+
+
 
 }
