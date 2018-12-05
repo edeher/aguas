@@ -1,24 +1,33 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head> 
-<body> 
-
-<ui:composition template="/WEB-INF/templates/plantilla.xhtml">
-
-<ui:define name="contet">
+<h:head></h:head>
+<body ><center>
+<p:messages id="msj" autoUpdate="true" showDetail="true"
+				globalOnly="true" closable="true" />
 	<h:form>
-	<p:dataTable>
-	
-	</p:dataTable>
-	
-	
+
+		
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Usuario" />
+
+				<p:inputText value="#{usuarioBean.usuario.usuario}"/>
+
+
+				<p:outputLabel value="clave" />
+
+				<p:password value="#{usuarioBean.usuario.clave}"/>
+				
+				<p:column/>
+				<p:commandButton icon="ui-icon-key" value="Login" action="#{usuarioBean.iniciarSesion()}" />
+
+			</h:panelGrid>
+		
 	</h:form>
-</ui:define>
-</ui:composition>
-</body> 
+</center>
+</body>
 </html>
