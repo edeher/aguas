@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -25,7 +26,7 @@ public class UsuarioBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		usuario = new Usuario();
+	
 
 	}
 
@@ -35,23 +36,24 @@ public class UsuarioBean implements Serializable {
 		try {
 
 			us = serviceusuario.iniciarSesion(usuario);
-			System.out.println("usuario:" + us.getUsuario());
-			System.out.println("clave :" + us.getClave());
 			
-			if(us != null) {
+			
+			if(us.getUsuario() != null) {
+			
+				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", us);
 				
 				redireccion="mantenimiento";
+				MensajeManager.mostrarMensaje("Aviso", "Ingreso Exitosa", "INFO");
 			}else {
+				System.out.println("entro al else");
 					
-				
+				MensajeManager.mostrarMensaje("Aviso", "Credenciales incorrectas", "WARN");
 			}
-
-		
 
 		} catch (Exception e) {
 			MensajeManager.mostrarMensaje("Aviso", e.getMessage(), "FATAL");
 		}
-		System.out.println(redireccion);
+	
 		return redireccion;
 	}
 

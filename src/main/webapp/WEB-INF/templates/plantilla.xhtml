@@ -8,6 +8,8 @@
 <h:head>
 	<h:outputScript name="script.js" library="js" />
 	<h:outputScript name="calendar.js" library="js" />
+	<f:event  type="preRenderView" listener="#{plantillaBean.verificarSesion()}" />
+	
 </h:head>
 <body>
 	<ui:insert name="header">
@@ -15,13 +17,20 @@
 			onsuccess="PF('statusDialog').hide()" />
 
 		<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+		
 			closable="false" resizable="false" showHeader="false">
+			
 			<p:graphicImage library="images" name="load.gif" />
+			
 		</p:dialog>
-<p:growl autoUpdate="true" showDetail="true"/>
+		
+		<p:growl autoUpdate="true" showDetail="true" />
+		
 		<h:form id="frmMenu">
+		
 			<p:menubar autoDisplay="false">
-			<p:menuitem icon="ui-icon-home" value="quimico"
+			
+				<p:menuitem icon="ui-icon-home" value="quimico"
 					action="quimico?faces-redirect=true"></p:menuitem>
 				<p:menuitem icon="ui-icon-home" value="bacterial"
 					action="bacterial?faces-redirect=true"></p:menuitem>
@@ -33,12 +42,17 @@
 					action="muestrafisoquimico?faces-redirect=true"></p:menuitem>
 				<p:menuitem icon="ui-icon-home" value="muestraquimico"
 					action="muestraquimico?faces-redirect=true"></p:menuitem>
-				
+
 				<f:facet name="options">
+				
 					<h:panelGrid columns="2">
+					
 						<p:clock pattern="h:mm:ss a dd/MM/yyyy" mode="server" />
+						
 						<p:commandButton icon="ui-icon-gear" />
+						
 					</h:panelGrid>
+					
 				</f:facet>
 
 			</p:menubar>
