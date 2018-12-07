@@ -7,37 +7,30 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import com.unia.model.Usuario;
+import com.unia.util.MensajeManager;
 
 @Named
 @ViewScoped
-public class PlantillaBean implements Serializable{
-	
-	
-	
-	
+public class PlantillaBean implements Serializable {
+
 	public void verificarSesion() {
 		try {
-			
-			
-			Usuario us=(Usuario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
-			System.out.println("usuario en el metodo verificar Sesion : "+us.getUsuario());
-			
-			if(us.getUsuario()==null) {
-				System.out.println("usuario : "+us.getUsuario());
-				
-				FacesContext.getCurrentInstance().getExternalContext().redirect("permisos.xhtml");
+
+			FacesContext context = FacesContext.getCurrentInstance();
+			Usuario us = (Usuario) context.getExternalContext().getSessionMap().get("usuario");
+
+			if (us == null ) {
+
+				context.getExternalContext().redirect("permisos.xhtml");
 			}
-			
-			
-			
+
 		} catch (Exception e) {
-			// TODO: handle exception
-			
-			
+
+			MensajeManager.mostrarMensaje("Aviso", e.getMessage(), "FATAL");
+			System.out.println("el error es :" + e.getMessage());
+
 		}
-		
-		
-		
+
 	}
 
 }
