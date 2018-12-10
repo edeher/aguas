@@ -28,32 +28,27 @@
 
 		<h:form id="frmMenu">
 
-			<p:menubar autoDisplay="false">
 
-				<p:menuitem icon="ui-icon-home" value="quimico"
-					action="quimico?faces-redirect=true"></p:menuitem>
-				<p:menuitem icon="ui-icon-home" value="bacterial"
-					action="bacterial?faces-redirect=true"></p:menuitem>
-				<p:menuitem icon="ui-icon-home" value="fisoquimico"
-					action="fisoquimico?faces-redirect=true"></p:menuitem>
-				<p:menuitem icon="ui-icon-home" value="muestrabacterial"
-					action="muestrabacterial?faces-redirect=true"></p:menuitem>
-				<p:menuitem icon="ui-icon-home" value="muestrafisoquimico"
-					action="muestrafisoquimico?faces-redirect=true"></p:menuitem>
-				<p:menuitem icon="ui-icon-home" value="muestraquimico"
-					action="muestraquimico?faces-redirect=true"></p:menuitem>
+
+			<p:menubar model="#{menuBean.model}">
 
 				<f:facet name="options">
 
-					<h:panelGrid columns="2">
+					<h:panelGrid columns="3">
 
 						<p:clock pattern="h:mm:ss a dd/MM/yyyy" mode="server" />
 
-						<p:commandButton icon="ui-icon-gear" />
-
+					
+						<p:commandButton id="buton1" actionListener="#{menuBean.cerrarSesion()}"
+							icon="ui-icon-power" action="index?faces-redirect=true"
+							 />
+							<p:tooltip id="toolTipGrow3" for="buton1" value="Cerrar Sesion"
+						showEffect="clip" hideEffect="explode" trackMouse="true"/>
 					</h:panelGrid>
 
 				</f:facet>
+
+
 
 			</p:menubar>
 
